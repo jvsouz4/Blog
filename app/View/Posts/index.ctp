@@ -1,36 +1,40 @@
 <!-- File: /app/View/Posts/index.ctp -->
 
 <h1>Blog posts</h1>
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Title</th>
+        <th>Created</th>
+        <th>Modified</th>
+        <th>Actions</th>
+    </tr>
 
-<p><?php echo $this->Html->link('Add Post', array('action' => 'add')); ?></p>
-
-<!-- Here's where we loop through our $posts array, printing out post info -->
+    <!-- Here is where we loop through our $posts array, printing out post info -->
 
     <?php foreach ($posts as $post): ?>
-    <div class="card w-50">
-        <div class="card-body">
-            <h5 class="card-title">
-                <?php
-                echo $this->Html->link(
-                    $post['Post']['title'],
-                    array('action' => 'view', $post['Post']['id'])
+    <tr>
+        <td><?php echo $post['Post']['id'];?></td>
+        <td>
+            <?php echo $this->Html->link($post['Post']['title'],array('controller' => 'posts', 'action' => 'view', $post['Post']['id'])); ?>
+        </td>
+        <td><?php echo $post['Post']['created']; ?></td>
+        <td><?php echo $post['Post']['modified']; ?></td>
+        <td>
+            <?php
+                echo $this->Form->postLink(
+                    'Delete',
+                    array('action' => 'delete', $post['Post']['id']),
+                    array('confirm' => 'Are you sure?')
                 );
-            ?></h5>
-            <p class="card-text"><?php echo $post['Post']['body']; ?></p>
-            <ul class="nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <?php echo $this->Html->link('Edit', array('action' => 'edit')); ?>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <?php echo $this->Html->link('Delete', array('action' => 'delete')); ?>
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </div>
+            ?>
+            <?php
+                echo $this->Html->link(
+                    'Edit', array('action' => 'edit', $post['Post']['id'])
+                );
+            ?>
+        </td>
+    </tr>
     <?php endforeach; ?>
-
+    <?php unset($post); ?>
 </table>
