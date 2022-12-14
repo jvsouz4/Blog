@@ -1,10 +1,12 @@
 <!-- File: /app/View/Posts/index.ctp -->
 
-<h1>Blog posts</h1>
+<h1>Posts</h1>
+<p><?php echo $this->Html->link('Add Post', array('action' => 'add')); ?></p>
 <table>
     <tr>
         <th>Id</th>
         <th>Title</th>
+        <th>Body</th>
         <th>Created</th>
         <th>Modified</th>
         <th>Actions</th>
@@ -18,6 +20,7 @@
         <td>
             <?php echo $this->Html->link($post['Post']['title'],array('controller' => 'posts', 'action' => 'view', $post['Post']['id'])); ?>
         </td>
+        <td><?php echo $post['Post']['body']; ?></td>
         <td><?php echo $post['Post']['created']; ?></td>
         <td><?php echo $post['Post']['modified']; ?></td>
         <td>
