@@ -5,10 +5,10 @@
 <table>
     <tr>
         <th>Id</th>
+        <th>Created by:</th>
         <th>Title</th>
         <th>Body</th>
         <th>Created</th>
-        <th>Modified</th>
         <th>Actions</th>
     </tr>
 
@@ -16,24 +16,24 @@
 
     <?php foreach ($posts as $post): ?>
     <tr>
-        <td><?php echo $post['Post']['id'];?></td>
+        <td><?php echo $post[0]['id'];?></td>
+        <td><?php echo $post[0]['username']; ?></td>
         <td>
-            <?php echo $this->Html->link($post['Post']['title'],array('controller' => 'posts', 'action' => 'view', $post['Post']['id'])); ?>
+            <?php echo $this->Html->link($post[0]['title'],array('controller' => 'posts', 'action' => 'view', $post[0]['id'])); ?>
         </td>
-        <td><?php echo $post['Post']['body']; ?></td>
-        <td><?php echo $post['Post']['created']; ?></td>
-        <td><?php echo $post['Post']['modified']; ?></td>
+        <td><?php echo $post[0]['body']; ?></td>
+        <td><?php echo $post[0]['created']; ?></td>
         <td>
             <?php
                 echo $this->Form->postLink(
                     'Delete',
-                    array('action' => 'delete', $post['Post']['id']),
+                    array('action' => 'delete', $post[0]['id']),
                     array('confirm' => 'Are you sure?')
                 );
             ?>
             <?php
                 echo $this->Html->link(
-                    'Edit', array('action' => 'edit', $post['Post']['id'])
+                    'Edit', array('action' => 'edit', $post[0]['id'])
                 );
             ?>
         </td>
