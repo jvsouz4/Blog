@@ -5,8 +5,14 @@ class PostsController extends AppController {
     public $helpers = array('Html', 'Form');
 
     public function index() {
-        $consulta = "SELECT * FROM posts INNER JOIN users ON Posts.user_id = users.id order by Posts.user_id";
+        $consulta = "SELECT p.id as post_id, p.title, p.body, p.created as post_created, u.id as user_id, u.username
+        FROM posts p
+        INNER JOIN users u
+        ON p.user_id = u.id
+        order by post_id";
+
         $sql = $this->Post->query($consulta);
+
         $this->set('posts', $sql);
     }
 
