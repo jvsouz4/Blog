@@ -1,44 +1,36 @@
-<!-- File: /app/View/Users/index.ctp -->
+<!-- File: /app/View/Posts/index.ctp -->
 
-<h1>Users</h1>
-<p><?php echo $this->Html->link('Add User', array('action' => 'add')); ?></p>
-<table>
-    <tr>
-        <th>Id</th>
-        <th>Username</th>
-        <th>Role</th>
-        <th>Action</th>
-    </tr>
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="utf-8" />
+        <title>Blog Home</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="css/styles.css" rel="stylesheet" />
+    </head>
+    
+    <body>
+        <!-- Page header with logo and tagline-->
+        <header class="py-5 bg-light border-bottom mb-4">
+            <div class="container">
+                <div class="text-center my-5">
+                    <h1 class="fw-bolder">Usuários do sistema</h1>
+                </div>
+            </div>
+        </header>
+        <!-- Page content-->
+        <div class="container">
+            <div class="row">
+                <!-- Blog entries-->
+                <div class="col-lg-4">
+                    <!-- Featured blog post-->
+                    <p><?php echo $this->Html->link('Adicionar novo usuário', array('action' => 'add')); ?></p>
 
-<!-- Here's where we loop through our $users array, printing out users info -->
-
-    <?php foreach ($users as $user): ?>
-    <tr>
-        <td><?php echo $user['User']['id']; ?></td>
-        <td>
-            <?php
-                echo $this->Html->link(
-                    $user['User']['username'],
-                    array('action' => 'view', $user['User']['id'])
-                );
-            ?>
-        </td>
-        <td><?php echo $user['User']['role']; ?></td>
-        <td>
-            <?php
-                echo $this->Form->postLink(
-                    'Delete',
-                    array('action' => 'delete', $user['User']['id']),
-                    array('confirm' => 'Are you sure?')
-                );
-            ?>
-            <?php
-                echo $this->Html->link(
-                    'Edit', array('action' => 'edit', $user['User']['id'])
-                );
-            ?>
-        </td>
-    </tr>
-    <?php endforeach; ?>
-
-</table>
+                    
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
