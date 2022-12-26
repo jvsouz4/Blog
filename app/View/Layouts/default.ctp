@@ -9,6 +9,7 @@
 		echo $this->Html->meta('icon');
 
 		echo $this->Html->css('styles.css');
+		echo $this->Html->script('scripts.js');
 
 		echo $this->fetch('meta');
 		echo $this->fetch('css');
@@ -45,13 +46,14 @@
 		</content>
 			
 		<!-- Footer-->
+		
         <footer class="py-5 bg-dark footer">
             <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Blog do Jão - 2022</p></div>
         </footer>
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
-        <script src="js/scripts.js"></script>
+        <script src="../js/scripts.js"></script>
 
 	</body>
 </html>
