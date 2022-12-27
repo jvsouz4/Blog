@@ -26,12 +26,18 @@
                 <!-- Filtro-->
                 <p><?php echo $this->Html->link('Adicionar novo usuário', array('action' => 'add')); ?></p>
                 <div>
-                    <?php
-                        $filtro = $this->Form->create('User');
-                        $filtro .= $this->Form->input('User.username', array('required' => false, 'label' => ''));
-                        $filtro .= $this->Form->end('Filtrar');
-                    ?>
-                    <?php echo $filtro ?>
+                    <div class='mb-3'>
+                        <?php
+                            echo $this->Form->create('User');
+                            echo $this->Form->input('User.username', array('required' => false, 'label' => ''));
+                            // $filtro .= $this->Form->end('Filtrar');
+                        ?>
+                    </div>
+                                     
+                    <div class='mb-3'> <button type="submit" class="btn btn-primary">Filtrar por nome</button>
+                        <?php echo $this->Form->end(__('')) ?>
+                    </div>
+                    
                 </div>
 
                 <!-- Featured blog users-->

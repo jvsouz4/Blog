@@ -25,13 +25,13 @@
             <!-- Featured blog post-->
             <p><?php echo $this->Html->link('Adicionar novo post', array('action' => 'add')); ?></p>
             <div class="">
-                <div class="row row-cols-1 row-cols-md-3 g-4">
+                <div class="row row-cols-1 row-cols-md-3 g-4 mb-3">
                     <?php foreach ($posts as $post): ?>
                         <div class="col">
                             <div class="card">
                                 <a href="http://localhost:8000/posts/view/<?php echo $post[0]['post_id'] ?>"><img class="card-img-top" src="https://dummyimage.com/850x350/dee2e6/6c757d.jpg" alt="..." /></a>
                                 <div class="card-body">
-                                    <div class="small text-muted"><?php echo $post[0]['post_created']; ?></div>
+                                    <div class="small text-muted"><?php echo $this->Time->format($post[0]['post_created'], '%e/%m de %Y, %H:%M'); ?></div>
                                     <h2 class="card-title"><?php echo $this->Html->link($post[0]['title'],array('controller' => 'posts', 'action' => 'view', $post[0]['post_id'])); ?></h2>
                                     <p class="card-text"><?php echo $post[0]['body']; ?></p>
                                     <?php
