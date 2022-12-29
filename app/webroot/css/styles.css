@@ -590,7 +590,7 @@ progress {
 }
 
 .footer{
-  position: absolute;
+  position: fixed;
   bottom: 0;
   vertical-align: bottom;
   width: 100%;
