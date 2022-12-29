@@ -5,17 +5,41 @@ App::uses('AppController', 'Controller');
 class UsersController extends AppController {
 
     public $paginate = array(
-        'fields' => array('User.username', 'User.id', 'User.role'),
+        'fields' => array('User.username' => 'user_username', 'User.id', 'User.role'),
         'conditions' => array(),
         'order' => array('User.id' => 'asc')
     );
 
     public function index() {
+        $title = $this->request->data('title');
+
+        $consultall ="SELECT u.id as user_id, u.username as user_username, u.role as user_role
+        FROM users u
+        order by u.id";
+
+        $consulta = "SELECT u.id as user_id, u.username as user_username, u.role as user_role
+        FROM users u
+        WHERE  u.username ILIKE '%$title%'
+        order by u.id";
+
         if (!empty($this->request->data)){
-            $this->paginate['conditions']['User.username ILIKE'] = $this->request->data['User']['username'] . '%';
+
+            $sql = $this->User->query($consulta);
+
+            $this->set('users', $sql);
+
+            
+        }else{
+            $sql = $this->User->query($consultall);
+
+            $this->set('users', $sql);
         }
-        $users = $this->paginate();
-        $this->set('users', $users);
+
+        if($sql == []){
+            $this->Flash->set('Não foram encontrados registros', array(
+                'element' => 'error'
+            ));
+        }
     }
 
     public function view($id = null) {

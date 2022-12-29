@@ -27,19 +27,16 @@
                 <p><?php echo $this->Html->link('Adicionar novo usuário', array('action' => 'add')); ?></p>
                 <div>
                     <div class='mb-3'>
-                        <?php
-                            echo $this->Form->create('User');
-                            echo $this->Form->input('User.username', array('required' => false, 'label' => ''));
-                            // $filtro .= $this->Form->end('Filtrar');
-                        ?>
+                        <?php echo $this->Form->create('User')?>
+                        <input placeholder="Nome" type="text" name="title" value="<?php if(isset($_POST['$title'])){ echo $_POST['$title'];}?>">
                     </div>
                                      
-                    <div class='mb-3'> <button type="submit" class="btn btn-primary">Filtrar por nome</button>
+                    <div class='mb-3'> <button type="submit" class="btn btn-primary">Filtrar</button>
                         <?php echo $this->Form->end(__('')) ?>
                     </div>
                     
                 </div>
-
+                <?php echo $this->Flash->render('flash'); ?>
                 <!-- Featured blog users-->
                 <table class="table table-striped table-hover">
                     <tr>
@@ -48,30 +45,30 @@
                         <th scope="col">Role</th>
                         <th scope="col">Ações</th>
                     </tr>
-
+                    
                     <?php foreach ($users as $user): ?>
                         <tr>
-                            <td scope="row"><?php echo $user['User']['id'];?></td>
+                            <td scope="row"><?php echo $user[0]['user_id'];?></td>
                             <td>
                                 <?php
                                     echo $this->Html->link(
-                                        $user['User']['username'],
-                                        array('action' => 'view', $user['User']['id'])
+                                        $user[0]['user_username'],
+                                        array('action' => 'view', $user[0]['user_id'])
                                     );
                                 ?>
                             </td>
-                            <td><?php echo $user['User']['role']; ?></td>
+                            <td><?php echo $user[0]['user_role']; ?></td>
                             <td>
                                 <?php
                                     echo $this->Form->postLink(
                                         'Delete',
-                                        array('action' => 'delete', $user['User']['id']),
+                                        array('action' => 'delete', $user[0]['user_id']),
                                         array('confirm' => 'Are you sure?')
                                     );
                                 ?>
                                 <?php
                                     echo $this->Html->link(
-                                        'Edit', array('action' => 'edit', $user['User']['id'])
+                                        'Edit', array('action' => 'edit', $user[0]['user_id'])
                                     );
                                 ?>
                             </td>

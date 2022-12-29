@@ -5,15 +5,30 @@ class PostsController extends AppController {
     public $helpers = array('Html', 'Form');
 
     public function index() {
-        $consulta = "SELECT p.id as post_id, p.title, p.body, p.created as post_created, u.id as user_id, u.username
+        $nome = $this->request->data('nome');
+
+        $consultall = "SELECT p.id as post_id, p.title, p.body, p.created as post_created, u.id as user_id, u.username
         FROM posts p
         INNER JOIN users u
         ON p.user_id = u.id
         order by post_id";
 
-        $sql = $this->Post->query($consulta);
+        $consulta = "SELECT p.id as post_id, p.title, p.body, p.created as post_created, u.id as user_id, u.username
+        FROM posts p
+        INNER JOIN users u
+        ON p.user_id = u.id
+        WHERE p.title ILIKE '%$nome%' OR p.body ILIKE '%$nome%'
+        order by post_id";
 
-        $this->set('posts', $sql);
+        if(!empty($this->request->data)){
+            $sql = $this->Post->query($consulta);
+
+            $this->set('posts', $sql);
+        }else{
+            $sql = $this->Post->query($consultall);
+
+            $this->set('posts', $sql);
+        }
     }
 
     public function view($id = null) {
