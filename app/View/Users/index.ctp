@@ -61,14 +61,14 @@
                             <td>
                                 <?php
                                     echo $this->Form->postLink(
-                                        'Delete',
+                                        'Deletar',
                                         array('action' => 'delete', $user[0]['user_id']),
                                         array('confirm' => 'Are you sure?')
                                     );
                                 ?>
                                 <?php
                                     echo $this->Html->link(
-                                        'Edit', array('action' => 'edit', $user[0]['user_id'])
+                                        'Editar', array('action' => 'edit', $user[0]['user_id'])
                                     );
                                 ?>
                             </td>

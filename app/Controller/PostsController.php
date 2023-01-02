@@ -6,22 +6,63 @@ class PostsController extends AppController {
 
     public function index() {
         $nome = $this->request->data('nome');
+        $dtinicial = $this->request->data('dtinicial');
+        $dtfinal = $this->request->data('dtfinal');
 
-        $consultall = "SELECT p.id as post_id, p.title, p.body, p.created as post_created, u.id as user_id, u.username
+        $consultall = "SELECT p.id as post_id, p.title, p.body, p.created as post_created, u.id as user_id, u.username,
+        TO_CHAR(
+            p.created,
+            'DD-MM-YYYY'
+        )post_date
         FROM posts p
         INNER JOIN users u
         ON p.user_id = u.id
         order by post_id";
 
-        $consulta = "SELECT p.id as post_id, p.title, p.body, p.created as post_created, u.id as user_id, u.username
+        $consulta = "SELECT p.id as post_id, p.title, p.body, p.created as post_created, u.id as user_id, u.username,
+        TO_CHAR(
+            p.created,
+            'DD-MM-YYYY'
+        )post_date
         FROM posts p
         INNER JOIN users u
         ON p.user_id = u.id
         WHERE p.title ILIKE '%$nome%' OR p.body ILIKE '%$nome%'
         order by post_id";
 
-        if(!empty($this->request->data)){
+        $consulta2 = "SELECT p.id as post_id, p.title, p.body, p.created as post_created, u.id as user_id, u.username,
+        TO_CHAR(
+            p.created,
+            'DD-MM-YYYY'
+        )post_date
+        FROM posts p
+        INNER JOIN users u
+        ON p.user_id = u.id
+        WHERE p.created BETWEEN '$dtinicial' AND '$dtfinal'
+        order by post_id";
+        
+        $consulta3 = "SELECT p.id as post_id, p.title, p.body, p.created as post_created, u.id as user_id, u.username,
+        TO_CHAR(
+            p.created,
+            'DD-MM-YYYY'
+        )post_date
+        FROM posts p
+        INNER JOIN users u
+        ON p.user_id = u.id
+        WHERE p.title ILIKE '%$nome%' OR p.body ILIKE '%$nome%' AND p.created BETWEEN '$dtinicial' AND '$dtfinal'
+        order by post_id";
+        
+
+        if(!empty($this->request->data('nome')) && empty($this->request->data('dtinicial')) && empty($this->request->data('dtfinal'))){
             $sql = $this->Post->query($consulta);
+
+            $this->set('posts', $sql);
+        }elseif(empty($this->request->data('nome')) && !empty($this->request->data('dtinicial')) && !empty($this->request->data('dtfinal'))){
+            $sql = $this->Post->query($consulta2);
+
+            $this->set('posts', $sql);
+        }elseif(!empty($this->request->data('nome')) && !empty($this->request->data('dtinicial')) && !empty($this->request->data('dtfinal'))){
+            $sql = $this->Post->query($consulta3);
 
             $this->set('posts', $sql);
         }else{

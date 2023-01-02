@@ -27,7 +27,9 @@
                 <div>
                     <div class='mb-3'>
                         <?php echo $this->Form->create('Post')?>
-                        <input placeholder="Título ou conteúdo" type="text" name="nome" value="<?php if(isset($_POST['$nome'])){ echo $_POST['$nome'];}?>">
+                        <input placeholder="Título ou conteúdo" style="width: 150px;" type="text" name="nome" value="<?php if(isset($_POST['$nome'])){ echo $_POST['$nome'];}?>">
+                        <input placeholder="Data inicial (AAAA-MM-DD)" style="width: 210px;" type="text" name="dtinicial" value="<?php if(isset($_POST['$dtinicial'])){ echo $_POST['$dtinicial'];}?>">
+                        <input placeholder="Data final (AAAA-MM-DD)" style="width: 200px;" type="text" name="dtfinal" value="<?php if(isset($_POST['$dtfinal'])){ echo $_POST['$dtfinal'];}?>">
                     </div>
                                      
                     <div class='mb-3'> <button type="submit" class="btn btn-primary">Filtrar</button>
@@ -43,7 +45,7 @@
                                 <div class="card">
                                     <a href="http://localhost:8000/posts/view/<?php echo $post[0]['post_id'] ?>"><img class="card-img-top" src="https://dummyimage.com/850x350/dee2e6/6c757d.jpg" alt="..." /></a>
                                     <div class="card-body">
-                                        <div class="small text-muted"><?php echo $this->Time->format($post[0]['post_created'], '%e/%m de %Y, %H:%M'); ?></div>
+                                        <div class="small text-muted"><?php echo 'Criado em: ' . $post[0]['post_date'] ?></div>
                                         <h2 class="card-title"><?php echo $this->Html->link($post[0]['title'],array('controller' => 'posts', 'action' => 'view', $post[0]['post_id'])); ?></h2>
                                         <p class="card-text"><?php echo $post[0]['body']; ?></p>
                                         <?php
