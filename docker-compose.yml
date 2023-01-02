@@ -11,7 +11,7 @@ services:
       - 8000:80
     depends_on:
       - db
-
+  
   db:
     image: postgres
     restart: always
@@ -20,6 +20,8 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: 12345
       POSTGRES_DB: cakephp_db
+      PGTZ: "America/Fortaleza"
+      TZ: "America/Fortaleza"
     ports:
       - 5432:5432
     volumes:

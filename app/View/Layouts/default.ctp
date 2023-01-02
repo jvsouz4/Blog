@@ -47,7 +47,7 @@
 			
 		<!-- Footer-->
 		
-        <footer class="py-5 bg-dark footer">
+        <footer class="footer py-5 bg-dark">
             <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Blog do Jão - 2022</p></div>
         </footer>
         <!-- Bootstrap core JS-->
