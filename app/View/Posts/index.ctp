@@ -72,6 +72,5 @@
                 </div>
             </div>    
         </div>
-        <div class="PHP_EOL"></div>
     </body>
 </html>
