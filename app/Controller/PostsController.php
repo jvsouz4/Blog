@@ -6,8 +6,14 @@ class PostsController extends AppController {
 
     public function index() {
         $nome = $this->request->data('nome');
+        
         $dtinicial = $this->request->data('dtinicial');
+        $dtformatada = str_replace("/", "-", $dtinicial);
+        $dtiformatada = date('Y-m-d', strtotime($dtformatada));
+
         $dtfinal = $this->request->data('dtfinal');
+        $dtformatada2 = str_replace("/", "-", $dtfinal);
+        $dtfformatada = date('Y-m-d', strtotime($dtformatada2));
 
         $consultall = "SELECT p.id as post_id, p.title, p.body, p.created as post_created, u.id as user_id, u.username,
         TO_CHAR(
@@ -38,7 +44,7 @@ class PostsController extends AppController {
         FROM posts p
         INNER JOIN users u
         ON p.user_id = u.id
-        WHERE p.created BETWEEN '$dtinicial' AND '$dtfinal'
+        WHERE p.created BETWEEN '$dtiformatada' AND '$dtfformatada 23:59'
         order by post_id";
         
         $consulta3 = "SELECT p.id as post_id, p.title, p.body, p.created as post_created, u.id as user_id, u.username,
@@ -49,7 +55,7 @@ class PostsController extends AppController {
         FROM posts p
         INNER JOIN users u
         ON p.user_id = u.id
-        WHERE p.title ILIKE '%$nome%' OR p.body ILIKE '%$nome%' AND p.created BETWEEN '$dtinicial' AND '$dtfinal'
+        WHERE p.title ILIKE '%$nome%' OR p.body ILIKE '%$nome%' AND p.created BETWEEN '$dtiformatada' AND '$dtfformatada'
         order by post_id";
         
 
@@ -70,6 +76,12 @@ class PostsController extends AppController {
 
             $this->set('posts', $sql);
         }
+
+        if($sql == []){
+            $this->Flash->set('Não foram encontrados registros.', array(
+                'element' => 'error'
+            ));
+        }
     }
 
     public function view($id = null) {
@@ -89,7 +101,7 @@ class PostsController extends AppController {
             //Added this line
             $this->request->data['Post']['user_id'] = $this->Auth->user('id');
             if ($this->Post->save($this->request->data)) {
-                $this->Flash->success(__('Your post has been saved.'));
+                $this->Flash->success(__('Seu post foi salvo.'));
                 return $this->redirect(array('action' => 'index'));
             }
         }
@@ -108,10 +120,10 @@ class PostsController extends AppController {
         if ($this->request->is(array('post', 'put'))) {
             $this->Post->id = $id;
             if ($this->Post->save($this->request->data)) {
-                $this->Flash->success(__('Your post has been updated.'));
+                $this->Flash->success(__('Seu post foi atualizado.'));
                 return $this->redirect(array('action' => 'index'));
             }
-            $this->Flash->error(__('Unable to update your post.'));
+            $this->Flash->error(__('Não foi possível atualizar seu post.'));
         }
     
         if (!$this->request->data) {
@@ -126,11 +138,11 @@ class PostsController extends AppController {
     
         if ($this->Post->delete($id)) {
             $this->Flash->success(
-                __('The post with id: %s has been deleted.', h($id))
+                __('O post com id: %s foi deletado.', h($id))
             );
         } else {
             $this->Flash->error(
-                __('The post with id: %s could not be deleted.', h($id))
+                __('O post com id: %s não pode foi deletado.', h($id))
             );
         }
     

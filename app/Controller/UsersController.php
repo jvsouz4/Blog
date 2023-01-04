@@ -36,7 +36,7 @@ class UsersController extends AppController {
         }
 
         if($sql == []){
-            $this->Flash->set('Não foram encontrados registros', array(
+            $this->Flash->set('Não foram encontrados registros.', array(
                 'element' => 'error'
             ));
         }
@@ -54,11 +54,11 @@ class UsersController extends AppController {
         if ($this->request->is('post')) {
             $this->User->create();
             if ($this->User->save($this->request->data)) {
-                $this->Flash->success(__('The user has been saved'));
+                $this->Flash->success(__('O usuário foi criado.'));
                 return $this->redirect(array('action' => 'index'));
             }
             $this->Flash->error(
-                __('The user could not be saved. Please, try again.')
+                __('O usuário não foi criado. Por favor, tente novamente.')
             );
         }
     }
@@ -70,11 +70,11 @@ class UsersController extends AppController {
         }
         if ($this->request->is('post') || $this->request->is('put')) {
             if ($this->User->save($this->request->data)) {
-                $this->Flash->success(__('The user has been updated'));
+                $this->Flash->success(__('O usuário foi atualizado.'));
                 return $this->redirect(array('action' => 'index'));
             }
             $this->Flash->error(
-                __('The user could not be saved. Please, try again.')
+                __('O usuário não foi salvo. Por favor, tente novamente.')
             );
         } else {
             $this->request->data = $this->User->findById($id);
@@ -93,10 +93,10 @@ class UsersController extends AppController {
             throw new NotFoundException(__('Invalid user'));
         }
         if ($this->User->delete()) {
-            $this->Flash->success(__('User deleted'));
+            $this->Flash->success(__('Usuário deletado.'));
             return $this->redirect(array('action' => 'index'));
         }
-        $this->Flash->error(__('User was not deleted'));
+        $this->Flash->error(__('O usuário não foi deletado.'));
         return $this->redirect(array('action' => 'index'));
     }
 
@@ -111,7 +111,7 @@ class UsersController extends AppController {
             if ($this->Auth->login()) {
                 return $this->redirect($this->Auth->redirectUrl());
             }
-            $this->Flash->error(__('Invalid username or password, try again'));
+            $this->Flash->error(__('Usuário/senha inválido, tente novamente.'));
         }
     }
     

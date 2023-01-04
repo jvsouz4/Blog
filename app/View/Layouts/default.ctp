@@ -34,12 +34,11 @@
 							<li class="nav-item"><a class="nav-link" href="">Sobre mim</a></li>
 							<li class="nav-item dropdown">
 								<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-									Bem vindo,
+									Bem vindo!
 								</a>
 								<ul class="dropdown-menu dropdown-menu-dark">
-									<li><a class="dropdown-item" href="#">Login</a></li>
-									<li><a class="dropdown-item" href="#">Editar usuário</a></li>
-									<li><a class="dropdown-item" href="#">Sair do sistema</a></li>
+									<li><a class="dropdown-item" href="http://localhost:8000/users/login">Login</a></li>
+									<li><a class="dropdown-item" href="http://localhost:8000/users/logout">Sair do sistema</a></li>
 								</ul>
 							</li>
 						</ul>
@@ -49,8 +48,6 @@
 		</header>
 
 		<content>
-			<?php echo $this->Flash->render(); ?>
-
 			<?php echo $this->fetch('content'); ?>
 		</content>
 			
