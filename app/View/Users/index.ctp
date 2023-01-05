@@ -5,10 +5,6 @@
     <head>
         <meta charset="utf-8" />
         <title>Blog Users</title>
-        <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-        <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="css/styles.css" rel="stylesheet" />
     </head>
 
     <body>
