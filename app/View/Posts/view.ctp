@@ -19,13 +19,13 @@
                             <!-- Post title-->
                             <h1 class="fw-bolder mb-1"><?php echo h($post['Post']['title']);?></h1>
                             <!-- Post meta content-->
-                            <div class="text-muted fst-italic mb-2">Created in: <?php echo $post['Post']['created']; ?></div>
+                            <div class="text-muted fst-italic mb-2">Criado em: <?php echo $post['Post']['created']; ?></div>
                             <!-- Post categories-->
                             <a class="badge bg-secondary text-decoration-none link-light" href="http://localhost:8000/posts">All Posts</a>
                         </header>
 
                         <!-- Preview image figure-->
-                        <figure class="mb-4"><img class="img-fluid rounded" src="https://dummyimage.com/900x400/ced4da/6c757d.jpg" alt="..." /></figure>
+                        <figure class="mb-3"><img class="img-fluid rounded" src="https://dummyimage.com/900x400/ced4da/6c757d.jpg" alt="..." /></figure>
                         <!-- Post content-->
                         <section class="mb-5">
                             <p class="fs-5 mb-4"><?php echo h($post['Post']['body']);?></p>

@@ -24,13 +24,19 @@
                 <div>
                     <div class='mb-3'>
                         <?php echo $this->Form->create('User')?>
-                        <input placeholder="Nome" type="text" name="title" value="<?php if(isset($_POST['$title'])){ echo $_POST['$title'];}?>">
                     </div>
-                                     
-                    <div class='mb-3'> <button type="submit" class="btn btn-primary">Filtrar</button>
-                        <?php echo $this->Form->end(__('')) ?>
+                    <div class="row row-cols-lg-auto g-1 align-items-center mb-3">
+                        <div class="col-12">
+                            <div class="input-group">
+                                <input placeholder="Nome" class="form-control" type="text" name="title" value="<?php if(isset($_POST['$title'])){ echo $_POST['$title'];}?>">
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="input-group">
+                                <button type="submit" class="btn btn-primary">Filtrar <?php echo $this->Form->end(__('')) ?></button>
+                            </div>
+                        </div>
                     </div>
-                    
                 </div>
                 <?php echo $this->Flash->render('flash'); ?>
                 <!-- Featured blog users-->
@@ -39,7 +45,8 @@
                         <th scope="col">ID</th>
                         <th scope="col">Nome</th>
                         <th scope="col">Role</th>
-                        <th scope="col">Ações</th>
+                        <th scope="col">Deletar</th>
+                        <th scope="col">Editar</th>
                     </tr>
                     
                     <?php foreach ($users as $user): ?>
@@ -62,6 +69,8 @@
                                         array('confirm' => 'Are you sure?')
                                     );
                                 ?>
+                            </td>
+                            <td>
                                 <?php
                                     echo $this->Html->link(
                                         'Editar', array('action' => 'edit', $user[0]['user_id'])

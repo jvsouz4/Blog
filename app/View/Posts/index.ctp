@@ -49,12 +49,14 @@
                 </div>
                 <?php echo $this->Flash->render('flash'); ?>
                 <!-- Featured blog post-->
-                <div class="">
+                <div class="mb-5">
                     <div class="row row-cols-1 row-cols-md-3 g-4 mb-3">
                         <?php foreach ($posts as $post): ?>
                             <div class="col">
                                 <div class="card">
-                                    <a href="http://localhost:8000/posts/view/<?php echo $post[0]['post_id'] ?>"><img class="card-img-top" src="https://dummyimage.com/850x350/dee2e6/6c757d.jpg" alt="..." /></a>
+                                    <div>
+                                        <a href="http://localhost:8000/posts/view/<?php echo $post[0]['post_id'] ?>"><img class="card-img-top" src="https://dummyimage.com/850x350/dee2e6/6c757d.jpg"></a>
+                                    </div>
                                     <div class="card-body">
                                         <div class="small text-muted"><?php echo 'Criado em: ' . $post[0]['post_date'] ?></div>
                                         <div class="small text-muted"><?php echo 'Criado por: ' . $post[0]['username'] ?></div>
