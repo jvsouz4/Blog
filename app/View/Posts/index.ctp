@@ -8,6 +8,7 @@
     </head>
 
     <body>
+        <!-- Page header with logo and tagline-->
         <div class="py-5 bg-light border-bottom mb-4">
             <div class="container">
                 <div class="text-center my-5">
