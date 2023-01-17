@@ -9,9 +9,10 @@
 
         <!-- Meu CSS-->
 		<?php echo $this->Html->css('meu.css')?>
+		<?php echo $this->fetch('css')?>
 		<!-- Bootstrap core CSS-->
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-		
+		<link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
 	</head>
 	<body>
 		<!-- Header-->
@@ -19,7 +20,7 @@
 		     <!-- Responsive navbar-->
 			<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 				<div class="container">
-					<a class="navbar-brand">Blog do Jão</a>
+					<a class="navbar-brand fontexto">Blog do Jão</a>
 					
 					<div class="collapse navbar-collapse" id="navbarSupportedContent">
 						<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
@@ -53,6 +54,7 @@
 
         <!-- Meu JS-->
 		<?php echo $this->Html->script('meu.js')?>
+		<?php echo $this->fetch('script')?>
 
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
