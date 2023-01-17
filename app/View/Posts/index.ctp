@@ -12,7 +12,7 @@
         <div class="py-5 bg-light border-bottom mb-4">
             <div class="container">
                 <div class="text-center my-5">
-                    <h1 class="fw-bolder">Posts do blog</h1>
+                    <h1 class="fw-bolder fontexto">Posts do blog</h1>
                 </div>
             </div>
         </div>
@@ -51,9 +51,9 @@
                 <?php echo $this->Flash->render('flash'); ?>
                 <!-- Featured blog post-->
                 <div class="mb-5">
-                    <div class="row row-cols-1 row-cols-md-3 g-4 mb-3">
+                    <div style="height:400px" class="row row-cols-1 row-cols-md-3 my-4 overflow-auto">
                         <?php foreach ($posts as $post): ?>
-                            <div class="col">
+                            <div class="col mb-4">
                                 <div class="card">
                                     <div>
                                         <a href="http://localhost:8000/posts/view/<?php echo $post[0]['post_id'] ?>"><img class="card-img-top" src="https://dummyimage.com/850x350/dee2e6/6c757d.jpg"></a>
