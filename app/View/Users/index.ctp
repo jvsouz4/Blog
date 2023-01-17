@@ -12,7 +12,7 @@
         <div class="py-5 bg-light border-bottom mb-4">
             <div class="container">
                 <div class="text-center my-5">
-                    <h1 class="fw-bolder">Usuários do sistema</h1>
+                    <h1 class="fw-bolder fontexto">Usuários do sistema</h1>
                 </div>
             </div>
         </div>
@@ -40,46 +40,48 @@
                 </div>
                 <?php echo $this->Flash->render('flash'); ?>
                 <!-- Featured blog users-->
-                <table class="table table-striped table-hover">
-                    <tr>
-                        <th scope="col">ID</th>
-                        <th scope="col">Nome</th>
-                        <th scope="col">Role</th>
-                        <th scope="col">Deletar</th>
-                        <th scope="col">Editar</th>
-                    </tr>
-                    
-                    <?php foreach ($users as $user): ?>
+                <div style="height:300px" class=" overflow-auto">
+                    <table class="table table-striped table-hover">
                         <tr>
-                            <td scope="row"><?php echo $user[0]['user_id'];?></td>
-                            <td>
-                                <?php
-                                    echo $this->Html->link(
-                                        $user[0]['user_username'],
-                                        array('action' => 'view', $user[0]['user_id'])
-                                    );
-                                ?>
-                            </td>
-                            <td><?php echo $user[0]['user_role']; ?></td>
-                            <td>
-                                <?php
-                                    echo $this->Form->postLink(
-                                        'Deletar',
-                                        array('action' => 'delete', $user[0]['user_id']),
-                                        array('confirm' => 'Are you sure?')
-                                    );
-                                ?>
-                            </td>
-                            <td>
-                                <?php
-                                    echo $this->Html->link(
-                                        'Editar', array('action' => 'edit', $user[0]['user_id'])
-                                    );
-                                ?>
-                            </td>
+                            <th scope="col">ID</th>
+                            <th scope="col">Nome</th>
+                            <th scope="col">Role</th>
+                            <th scope="col">Deletar</th>
+                            <th scope="col">Editar</th>
                         </tr>
-                    <?php endforeach; ?>
-                </table>
+                        
+                        <?php foreach ($users as $user): ?>
+                            <tr>
+                                <td scope="row"><?php echo $user[0]['user_id'];?></td>
+                                <td>
+                                    <?php
+                                        echo $this->Html->link(
+                                            $user[0]['user_username'],
+                                            array('action' => 'view', $user[0]['user_id'])
+                                        );
+                                    ?>
+                                </td>
+                                <td><?php echo $user[0]['user_role']; ?></td>
+                                <td>
+                                    <?php
+                                        echo $this->Form->postLink(
+                                            'Deletar',
+                                            array('action' => 'delete', $user[0]['user_id']),
+                                            array('confirm' => 'Are you sure?')
+                                        );
+                                    ?>
+                                </td>
+                                <td>
+                                    <?php
+                                        echo $this->Html->link(
+                                            'Editar', array('action' => 'edit', $user[0]['user_id'])
+                                        );
+                                    ?>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </table>
+                </div>
             </div>   
         </div>
     </body>
