@@ -85,6 +85,19 @@ class PostsController extends AppController {
     }
 
     public function view($id = null) {
+        $consultall = "SELECT p.id as post_id, p.title, p.body, p.created, u.id as user_id, u.username,
+        TO_CHAR(
+            p.created,
+            'DD-MM-YYYY'
+        )post_date
+        FROM posts p
+        INNER JOIN users u
+        ON p.user_id = u.id
+        WHERE p.id = $id
+        order by post_id";
+
+        $sql = $this->Post->query($consultall);
+
         if (!$id) {
             throw new NotFoundException(__('Invalid post'));
         }
@@ -93,7 +106,7 @@ class PostsController extends AppController {
         if (!$post) {
             throw new NotFoundException(__('Invalid post'));
         }
-        $this->set('post', $post);
+        $this->set('posts', $sql);
     }
 
     public function add() {
