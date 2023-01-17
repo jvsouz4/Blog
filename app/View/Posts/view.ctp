@@ -4,33 +4,43 @@
 <html lang="pt-br">
     <head>
         <meta charset="utf-8" />
-        <title>Blog Post</title>
+        <title>Blog Home</title>
     </head>
 
     <body>
         <!-- Page content-->
-        <div class="container mt-5">
+        <div class="container">
             <div class="row">
-                <div class="col-lg-8">
-                    <!-- Post content-->
-                    <article>
-                        <!-- Post header-->
-                        <header class="mb-4">
-                            <!-- Post title-->
-                            <h1 class="fw-bolder mb-1"><?php echo h($post['Post']['title']);?></h1>
-                            <!-- Post meta content-->
-                            <div class="text-muted fst-italic mb-2">Criado em: <?php echo $post['Post']['created']; ?></div>
-                            <!-- Post categories-->
-                            <a class="badge bg-secondary text-decoration-none link-light" href="http://localhost:8000/posts">All Posts</a>
-                        </header>
-
-                        <!-- Preview image figure-->
-                        <figure class="mb-3"><img class="img-fluid rounded" src="https://dummyimage.com/900x400/ced4da/6c757d.jpg" alt="..." /></figure>
-                        <!-- Post content-->
-                        <section class="mb-5">
-                            <p class="fs-5 mb-4"><?php echo h($post['Post']['body']);?></p>
-                        </section>
-                    </article>
+                <div class="col-lg-10 col-xl-9 mx-auto">
+                    <div class="card row my-5 border-0 shadow rounded-3">
+                        <?php foreach ($posts as $post): ?>
+                            <div class="card-body p-sm-3">
+                                <div class="py-5 bg-light border-bottom mb-4">
+                                    <div class="container">
+                                        <div class="text-center my-5">
+                                            <h1 class="fw-bolder fontexto">Visualização do post</h1>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="row">
+                                    <div class="col-md-7">
+                                        <a>
+                                        <img class="img-fluid rounded mb-3 mb-md-0" src="https://dummyimage.com/850x350/dee2e6/6c757d.jpg" alt="">
+                                        </a>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <h2><?php echo h($post[0]['title']);?></h3>
+                                        <hr>
+                                        <h5><?php echo $post[0]['body'];?></h5>
+                                        <hr>
+                                        <p>Criado em: <?php echo $post[0]['created']; ?></p>
+                                        <p>Criado por: <?php echo $post[0]['username']; ?></p>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
                 </div>
             </div>
         </div>
