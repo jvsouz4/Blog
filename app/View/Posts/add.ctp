@@ -4,7 +4,7 @@
 <html lang="pt-br">
     <head>
         <meta charset="utf-8" />
-        <title>Adicionar post</title>
+        <?php $this->set('title_for_layout', 'Adicionar post');?>
     </head>
 
     <body>
@@ -17,7 +17,7 @@
                             <div class="py-5 bg-light border-bottom mb-4">
                                 <div class="container">
                                     <div class="text-center my-5">
-                                        <h1 class="fw-bolder fontexto">Adicionar novo post</h1>
+                                        <h1 class="fw-bolder text-secondary fontexto">Adicionar novo post</h1>
                                     </div>
                                 </div>
                             </div>
@@ -35,11 +35,6 @@
 
                                 <button type="submit" class="btn btn-primary w-100 d-grid my-4">Adicionar post </button>
 
-                                <hr class="my-4">
-
-                                <div class="d-grid text-center p-sm-3">
-                                    JãoGest
-                                </div>
                             <?php $this->Form->end(__('Save post')) ?>
                         </div>
                     </div>

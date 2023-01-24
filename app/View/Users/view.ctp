@@ -4,7 +4,7 @@
 <html lang="pt-br">
     <head>
         <meta charset="utf-8" />
-        <title>Blog Home</title>
+        <?php $this->set('title_for_layout', 'Visualização do usuário');?>
     </head>
 
     <body>
@@ -17,7 +17,7 @@
                             <div class="py-5 bg-light border-bottom mb-4">
                                 <div class="container">
                                     <div class="text-center my-5">
-                                        <h1 class="fw-bolder fontexto">Visualização do usuário</h1>
+                                        <h1 class="fw-bolder text-secondary fontexto">Visualização do usuário</h1>
                                     </div>
                                 </div>
                             </div>
@@ -29,7 +29,7 @@
                                     </a>
                                 </div>
                                 <div class="col-md-5 align-self-center">
-                                    <h2><?php echo h($user['User']['username']); ?></h3>
+                                    <h2><?php echo h($user['User']['name']); ?></h3>
                                     <hr>
                                     <h5>Criado em: <?php echo $user['User']['created']; ?></h5>
                                     <hr>

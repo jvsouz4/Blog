@@ -4,7 +4,7 @@
 <html lang="pt-br">
     <head>
         <meta charset="utf-8" />
-        <title>Login</title>
+        <?php $this->set('title_for_layout', 'Login');?>
     </head>
 
     <body>
@@ -17,13 +17,14 @@
                             <div class="py-5 bg-light border-bottom mb-4">
                                 <div class="container">
                                     <div class="text-center my-5">
-                                        <h1 class="fw-bolder fontexto">Login</h1>
+                                        <h1 class="fw-bolder text-secondary fontexto">Login</h1>
                                     </div>
                                 </div>
                             </div>
                             <div><?php echo __('Por favor, informe suas credenciais!'); ?></div>
                             
-                            <?php echo $this->Flash->render('auth'); ?>
+                            <?php echo $this->Flash->render('flash'); ?>
+
                             <?php echo $this->Form->create('User');?>
                                 <div class="form-floating">
                                     <?php echo $this->Form->input('username', array('class' => 'form-control', 'label' => '', 'placeholder' => 'Usuário'));?>
@@ -37,13 +38,8 @@
 
                                 <button type="submit" class="btn btn-primary w-100 d-grid my-4">Login </button>
 
-                                <a class="d-block text-center small my-4" href="http://localhost:8000/users/add">Não tem uma conta? Criar novo usuário!</a>
+                                <a class="d-block text-center small my-4 text-decoration-none" href="http://localhost:8000/users/add">Não tem uma conta? Criar novo usuário!</a>
 
-                                <hr class="my-4">
-
-                                <div class="d-grid text-center p-sm-3">
-                                    JãoGest
-                                </div>
                             <?php $this->Form->end(__('Login')) ?>
 
                         </div>

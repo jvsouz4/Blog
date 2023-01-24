@@ -4,7 +4,7 @@
 <html lang="pt-br">
     <head>
         <meta charset="utf-8" />
-        <title>Blog Home</title>
+        <?php $this->set('title_for_layout', 'Visualização do post');?>
     </head>
 
     <body>
@@ -18,7 +18,7 @@
                                 <div class="py-5 bg-light border-bottom mb-4">
                                     <div class="container">
                                         <div class="text-center my-5">
-                                            <h1 class="fw-bolder fontexto">Visualização do post</h1>
+                                            <h1 class="fw-bolder text-secondary fontexto">Visualização do post</h1>
                                         </div>
                                     </div>
                                 </div>
@@ -35,7 +35,7 @@
                                         <h5><?php echo $post[0]['body'];?></h5>
                                         <hr>
                                         <p>Criado em: <?php echo $post[0]['created']; ?></p>
-                                        <p>Criado por: <?php echo $post[0]['username']; ?></p>
+                                        <p>Criado por: <?php echo $post[0]['name']; ?></p>
                                     </div>
                                 </div>
                             </div>

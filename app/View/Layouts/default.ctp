@@ -18,22 +18,25 @@
 		<!-- Header-->
 		<header>
 		     <!-- Responsive navbar-->
-			<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+			<nav class="navbar navbar-expand-lg navbar-dark bg-primary bg-opacity-75">
 				<div class="container">
 					<a class="navbar-brand fontexto">Blog do Jão</a>
-					
+					<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+						<span class="navbar-toggler-icon"></span>
+					</button>
 					<div class="collapse navbar-collapse" id="navbarSupportedContent">
 						<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-							<li class="nav-item"><a class="nav-link" href="http://localhost:8000">Posts</a></li>
-							<li class="nav-item"><a class="nav-link" href="http://localhost:8000/users">Usuários</a></li>
-							<li class="nav-item"><a class="nav-link" href="http://localhost:8000/infos">Sobre mim</a></li>
+							<li class="nav-item"><a class="text-white nav-link" href="http://localhost:8000">Posts</a></li>
+							<li class="nav-item"><a class="text-white nav-link" href="http://localhost:8000/users">Usuários</a></li>
+							<li class="nav-item"><a class="text-white nav-link" href="http://localhost:8000/infos">Sobre mim</a></li>
 							<li class="nav-item dropdown">
-								<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-									Bem vindo!
+								
+								<a class="text-white nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+									Bem vindo, <?php echo $logado ?>!
 								</a>
 								<ul class="dropdown-menu dropdown-menu-dark">
-									<li><a class="dropdown-item" href="http://localhost:8000/users/login">Login</a></li>
-									<li><a class="dropdown-item" href="http://localhost:8000/users/logout">Sair do sistema</a></li>
+									<li><a class="text-white dropdown-item" href="http://localhost:8000/users/login">Login</a></li>
+									<li><a class="text-white dropdown-item" href="http://localhost:8000/users/logout">Sair do sistema</a></li>
 								</ul>
 							</li>
 						</ul>
@@ -48,8 +51,8 @@
 		</content>
 			
 		<!-- Footer-->
-        <footer class="fixed-bottom py-5 bg-dark">
-            <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Blog do Jão - 2022</p></div>
+        <footer class="fixed-bottom py-5 bg-primary bg-opacity-75">
+            <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Blog do Jão - 2023</p></div>
         </footer>
 
         <!-- Meu JS-->
