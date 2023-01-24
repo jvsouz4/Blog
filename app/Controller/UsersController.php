@@ -4,22 +4,17 @@ App::uses('AppController', 'Controller');
 
 class UsersController extends AppController {
 
-    public $paginate = array(
-        'fields' => array('User.username' => 'user_username', 'User.id', 'User.role'),
-        'conditions' => array(),
-        'order' => array('User.id' => 'asc')
-    );
-
     public function index() {
+        
         $title = $this->request->data('title');
 
-        $consultall ="SELECT u.id as user_id, u.username as user_username, u.role as user_role
+        $consultall ="SELECT u.id as user_id, u.name as user_name, u.username as user_username, u.role as user_role
         FROM users u
         order by u.id";
 
-        $consulta = "SELECT u.id as user_id, u.username as user_username, u.role as user_role
+        $consulta = "SELECT u.id as user_id, u.name as user_name, u.username as user_username, u.role as user_role
         FROM users u
-        WHERE  u.username ILIKE '%$title%'
+        WHERE  u.username ILIKE '%$title%' OR u.name ILIKE '%$title%'
         order by u.id";
 
         if (!empty($this->request->data)){
@@ -113,6 +108,7 @@ class UsersController extends AppController {
             }
             $this->Flash->error(__('Usuário/senha inválido, tente novamente.'));
         }
+
     }
     
     public function logout() {

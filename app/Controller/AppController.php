@@ -34,7 +34,14 @@ class AppController extends Controller {
     }
 
     public function beforeFilter() {
+
         $this->Auth->allow('index', 'view');
+        if ($this->Auth->login() == false){
+            $this->set('logado', 'Visitante');
+        }else{
+            $logado = $_SESSION['Auth']['User']['name'];
+            $this->set('logado', $logado);
+        }
     }
     
 }

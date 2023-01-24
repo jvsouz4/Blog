@@ -15,7 +15,7 @@ class PostsController extends AppController {
         $dtformatada2 = str_replace("/", "-", $dtfinal);
         $dtfformatada = date('Y-m-d', strtotime($dtformatada2));
 
-        $consultall = "SELECT p.id as post_id, p.title, p.body, p.created as post_created, u.id as user_id, u.username,
+        $consultall = "SELECT p.id as post_id, p.title, p.body, p.created as post_created, u.id as user_id, u.name,
         TO_CHAR(
             p.created,
             'DD-MM-YYYY'
@@ -25,7 +25,7 @@ class PostsController extends AppController {
         ON p.user_id = u.id
         order by post_id";
 
-        $consulta = "SELECT p.id as post_id, p.title, p.body, p.created as post_created, u.id as user_id, u.username,
+        $consulta = "SELECT p.id as post_id, p.title, p.body, p.created as post_created, u.id as user_id, u.name,
         TO_CHAR(
             p.created,
             'DD-MM-YYYY'
@@ -36,7 +36,7 @@ class PostsController extends AppController {
         WHERE p.title ILIKE '%$nome%' OR p.body ILIKE '%$nome%'
         order by post_id";
 
-        $consulta2 = "SELECT p.id as post_id, p.title, p.body, p.created as post_created, u.id as user_id, u.username,
+        $consulta2 = "SELECT p.id as post_id, p.title, p.body, p.created as post_created, u.id as user_id, u.name,
         TO_CHAR(
             p.created,
             'DD-MM-YYYY'
@@ -47,7 +47,7 @@ class PostsController extends AppController {
         WHERE p.created BETWEEN '$dtiformatada' AND '$dtfformatada 23:59'
         order by post_id";
         
-        $consulta3 = "SELECT p.id as post_id, p.title, p.body, p.created as post_created, u.id as user_id, u.username,
+        $consulta3 = "SELECT p.id as post_id, p.title, p.body, p.created as post_created, u.id as user_id, u.name,
         TO_CHAR(
             p.created,
             'DD-MM-YYYY'
@@ -85,7 +85,7 @@ class PostsController extends AppController {
     }
 
     public function view($id = null) {
-        $consultall = "SELECT p.id as post_id, p.title, p.body, p.created, u.id as user_id, u.username,
+        $consultall = "SELECT p.id as post_id, p.title, p.body, p.created, u.id as user_id, u.name,
         TO_CHAR(
             p.created,
             'DD-MM-YYYY'
@@ -99,12 +99,12 @@ class PostsController extends AppController {
         $sql = $this->Post->query($consultall);
 
         if (!$id) {
-            throw new NotFoundException(__('Invalid post'));
+            throw new NotFoundException(__('Post inválido'));
         }
 
         $post = $this->Post->findById($id);
         if (!$post) {
-            throw new NotFoundException(__('Invalid post'));
+            throw new NotFoundException(__('Post inválido'));
         }
         $this->set('posts', $sql);
     }
@@ -122,12 +122,12 @@ class PostsController extends AppController {
 
     public function edit($id = null) {
         if (!$id) {
-            throw new NotFoundException(__('Invalid post'));
+            throw new NotFoundException(__('Post inválido'));
         }
     
         $post = $this->Post->findById($id);
         if (!$post) {
-            throw new NotFoundException(__('Invalid post'));
+            throw new NotFoundException(__('Post inválido'));
         }
     
         if ($this->request->is(array('post', 'put'))) {
