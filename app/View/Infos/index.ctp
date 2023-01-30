@@ -4,7 +4,7 @@
 <html lang="pt-br">
     <head>
         <meta charset="utf-8" />
-        <?php $this->set('title_for_layout', 'Sobre mim');?>
+        <?php $this->set('title_for_layout', 'Sobre o desenvolvedor');?>
     </head>
 
     <body>
@@ -12,7 +12,7 @@
         <div class="py-5 bg-light border-bottom mb-4">
             <div class="container">
                 <div class="text-center my-5">
-                    <h1 class="fw-bolder fontexto text-secondary">Sobre mim</h1>
+                    <h1 class="fw-bolder fontexto text-secondary">Sobre o desenvolvedor</h1>
                 </div>
             </div>
         </div>
@@ -26,23 +26,21 @@
                                 <!-- About-->
                                 <section class="resume-section" id="about">
                                     <div class="resume-section-content">
-                                        <h1 class="mb-2">
-                                            João
-                                            <span class="text-primary">Souza</span>
-                                        </h1>
+                                        <h2 class="mb-2">
+                                            <span class="text-primary">João Souza</span>
+                                        </h2>
                                         <div class="subheading mb-2 text-secondary">
-                                            <a>Estudante de engenharia da computação</a>
+                                            <a>Estudante de ciências e tecnologia</a>
                                         </div>
-                                        <p class="lead mb-2">Olá, me chamo João Victor, tenho 22 anos.</p>
-                                        <p class="lead mb-2">Atualmente, sou estudante de engenharia da computação na Universidade Federal do Rio Grande do Norte (UFRN), 
+                                        <p class="subheading mb-0">Olá, me chamo João Victor, tenho 22 anos.</p>
+                                        <p class="subheading mb-2">Atualmente, sou estudante de ciências e tecnologia na Universidade Federal do Rio Grande do Norte (UFRN), 
                                             trabalho desempenhando função de suporte na empresa Rede Mais Você e no meu tempo livre tenho me dedicado a estudar programação.
                                         </p>
                                         <div class="social-icons mb-2">
-                                            <a class="social-icon" href="#!"><i class="fab fa-linkedin-in"></i></a>
-                                            <a class="social-icon" href="#!"><i class="fab fa-github"></i></a>
-                                            <a class="social-icon" href="#!"><i class="fab fa-twitter"></i></a>
-                                            <a class="social-icon" href="#!"><i class="fab fa-facebook-f"></i></a>
-                                            <a class="text-decoration-none" href="mailto:joaovsouz@gmail.com">joaovsouz@gmail.com</a>
+                                            <a href="https://instagram.com/jvsouz4" target="_blank"><img src="https://img.shields.io/badge/-Instagram-%23E4405F?style=for-the-badge&logo=instagram&logoColor=white" target="_blank"></a>
+                                            <a href="mailto:joaovsouz@gmail.com"><img src="https://img.shields.io/badge/-Gmail-%23333?style=for-the-badge&logo=gmail&logoColor=white" target="_blank"></a>
+                                            <a href="https://github.com/jvsouz4"><img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white" target="_blank"></a>
+                                            <a href="https://www.linkedin.com/in/jvsouz4" target="_blank"><img src="https://img.shields.io/badge/-LinkedIn-%230077B5?style=for-the-badge&logo=linkedin&logoColor=white" target="_blank"></a>
                                         </div>
                                     </div>
                                 </section>
@@ -50,158 +48,78 @@
                                 <!-- Experience-->
                                 <section class="resume-section" id="experience">
                                     <div class="resume-section-content">
-                                        <h2 class="mb-3">Experience</h2>
+                                        <h3 class="mb-2 text-primary">Experiência</h3>
                                         <div class="d-flex flex-column flex-md-row justify-content-between mb-2">
                                             <div class="flex-grow-1">
-                                                <h3 class="mb-0">Senior Web Developer</h3>
-                                                <div class="subheading mb-3">Intelitec Solutions</div>
-                                                <p>Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day, going forward, a new normal that has evolved from generation X is on the runway heading towards a streamlined cloud solution. User generated content in real-time will have multiple touchpoints for offshoring.</p>
+                                                <h4 class="lead fw-bold mb-2">Suporte de informática</h4>
+                                                <div class="subheading text-secondary mb-2">Rede Mais Você</div>
                                             </div>
-                                            <div class="flex-shrink-0"><span class="text-primary">March 2013 - Present</span></div>
+                                            <div class="flex-shrink-0"><span class="text-primary">Julho de 2022 - Presente</span></div>
                                         </div>
                                         <div class="d-flex flex-column flex-md-row justify-content-between mb-2">
                                             <div class="flex-grow-1">
-                                                <h3 class="mb-0">Web Developer</h3>
-                                                <div class="subheading mb-3">Intelitec Solutions</div>
-                                                <p>Capitalize on low hanging fruit to identify a ballpark value added activity to beta test. Override the digital divide with additional clickthroughs from DevOps. Nanotechnology immersion along the information highway will close the loop on focusing solely on the bottom line.</p>
+                                                <h4 class="lead fw-bold mb-2">Técnico em informática</h4>
+                                                <div class="subheading text-secondary mb-2">União de Ensino Superior da Paraíba</div>
                                             </div>
-                                            <div class="flex-shrink-0"><span class="text-primary">December 2011 - March 2013</span></div>
+                                            <div class="flex-shrink-0"><span class="text-primary">Novembro de 2018 - Janeiro 2020</span></div>
                                         </div>
                                         <div class="d-flex flex-column flex-md-row justify-content-between mb-2">
                                             <div class="flex-grow-1">
-                                                <h3 class="mb-0">Junior Web Designer</h3>
-                                                <div class="subheading mb-3">Shout! Media Productions</div>
-                                                <p>Podcasting operational change management inside of workflows to establish a framework. Taking seamless key performance indicators offline to maximise the long tail. Keeping your eye on the ball while performing a deep dive on the start-up mentality to derive convergence on cross-platform integration.</p>
+                                                <h4 class="lead fw-bold mb-2">Suporte técnico em informática</h4>
+                                                <div class="subheading text-secondary mb-0">Autônomo</div>
                                             </div>
-                                            <div class="flex-shrink-0"><span class="text-primary">July 2010 - December 2011</span></div>
-                                        </div>
-                                        <div class="d-flex flex-column flex-md-row justify-content-between">
-                                            <div class="flex-grow-1">
-                                                <h3 class="mb-0">Web Design Intern</h3>
-                                                <div class="subheading mb-3">Shout! Media Productions</div>
-                                                <p>Collaboratively administrate empowered markets via plug-and-play networks. Dynamically procrastinate B2C users after installed base benefits. Dramatically visualize customer directed convergence without revolutionary ROI.</p>
-                                            </div>
-                                            <div class="flex-shrink-0"><span class="text-primary">September 2008 - June 2010</span></div>
+                                            <div class="flex-shrink-0"><span class="text-primary">2013 - Presente</span></div>
                                         </div>
                                     </div>
                                 </section>
-                                <hr class="m-0" />
+                                <hr class="my-2" />
                                 <!-- Education-->
                                 <section class="resume-section" id="education">
                                     <div class="resume-section-content">
-                                        <h2 class="mb-3">Education</h2>
+                                        <h3 class="mb-2 text-primary">Educação</h3>
                                         <div class="d-flex flex-column flex-md-row justify-content-between mb-2">
                                             <div class="flex-grow-1">
-                                                <h3 class="mb-0">University of Colorado Boulder</h3>
-                                                <div class="subheading mb-3">Bachelor of Science</div>
-                                                <div>Computer Science - Web Development Track</div>
-                                                <p>GPA: 3.23</p>
+                                                <h4 class="lead fw-bold mb-2">Universidade Federal do Rio Grande do Norte</h4>
+                                                <div class="subheading text-secondary mb-2">Bacharelado Interdisciplinar em Ciências e Tecnologia</div>
                                             </div>
-                                            <div class="flex-shrink-0"><span class="text-primary">August 2006 - May 2010</span></div>
+                                            <div class="flex-shrink-0"><span class="text-primary">Agosto de 2019 - Dezembro de 2024</span></div>
                                         </div>
                                         <div class="d-flex flex-column flex-md-row justify-content-between">
                                             <div class="flex-grow-1">
-                                                <h3 class="mb-0">James Buchanan High School</h3>
-                                                <div class="subheading mb-3">Technology Magnet Program</div>
-                                                <p>GPA: 3.56</p>
+                                                <h4 class="lead fw-bold mb-2">CDF Colégio e Curso</h4>
+                                                <div class="subheading text-secondary mb-0">Ensino médio</div>
                                             </div>
-                                            <div class="flex-shrink-0"><span class="text-primary">August 2002 - May 2006</span></div>
+                                            <div class="flex-shrink-0"><span class="text-primary">Fevereiro de 2011 - Dezembro de 2017</span></div>
                                         </div>
                                     </div>
                                 </section>
-                                <hr class="m-0" />
+                                <hr class="my-2" />
                                 <!-- Skills-->
                                 <section class="resume-section" id="skills">
                                     <div class="resume-section-content">
-                                        <h2 class="mb-2">Skills</h2>
-                                        <div class="subheading mb-3">Programming Languages & Tools</div>
-                                        <ul class="list-inline dev-icons">
-                                            <li class="list-inline-item"><i class="fab fa-html5"></i></li>
-                                            <li class="list-inline-item"><i class="fab fa-css3-alt"></i></li>
-                                            <li class="list-inline-item"><i class="fab fa-js-square"></i></li>
-                                            <li class="list-inline-item"><i class="fab fa-angular"></i></li>
-                                            <li class="list-inline-item"><i class="fab fa-react"></i></li>
-                                            <li class="list-inline-item"><i class="fab fa-node-js"></i></li>
-                                            <li class="list-inline-item"><i class="fab fa-sass"></i></li>
-                                            <li class="list-inline-item"><i class="fab fa-less"></i></li>
-                                            <li class="list-inline-item"><i class="fab fa-wordpress"></i></li>
-                                            <li class="list-inline-item"><i class="fab fa-gulp"></i></li>
-                                            <li class="list-inline-item"><i class="fab fa-grunt"></i></li>
-                                            <li class="list-inline-item"><i class="fab fa-npm"></i></li>
+                                        <h3 class="text-primary">Skills</h3>
+                                        <div class="subheading text-secondary  my-2">Linguagens de programação e ferramentas utilizadas</div>
+                                        <ul class="list-inline mb-0">
+                                            <li class="list-inline-item"><i class="fs-2 devicon-html5-plain-wordmark colored"></i></li>
+                                            <li class="list-inline-item"><i class="fs-2 devicon-css3-plain-wordmark colored"></i></li>
+                                            <li class="list-inline-item"><i class="fs-2 devicon-javascript-plain colored"></i></li>
+                                            <li class="list-inline-item"><i class="fs-2 devicon-php-plain colored"></i></li>
+                                            <li class="list-inline-item"><i class="fs-2 devicon-git-plain colored"></i></li>
+                                            <li class="list-inline-item"><i class="fs-2 devicon-github-original colored"></i></li>
+                                            <li class="list-inline-item"><i class="fs-2 devicon-docker-plain colored"></i></li>
+                                            <li class="list-inline-item"><i class="fs-2 devicon-cakephp-plain colored"></i></li>
+                                            <li class="list-inline-item"><i class="fs-2 devicon-bootstrap-plain colored"></i></li>
+                                            <li class="list-inline-item"><i class="fs-2 devicon-vscode-plain colored"></i></li>
                                         </ul>
-                                        <div class="subheading mb-3">Workflow</div>
-                                        <ul class="fa-ul mb-0">
-                                            <li>
-                                                <span class="fa-li"><i class="fas fa-check"></i></span>
-                                                Mobile-First, Responsive Design
-                                            </li>
-                                            <li>
-                                                <span class="fa-li"><i class="fas fa-check"></i></span>
-                                                Cross Browser Testing & Debugging
-                                            </li>
-                                            <li>
-                                                <span class="fa-li"><i class="fas fa-check"></i></span>
-                                                Cross Functional Teams
-                                            </li>
-                                            <li>
-                                                <span class="fa-li"><i class="fas fa-check"></i></span>
-                                                Agile Development & Scrum
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </section>
-                                <hr class="m-0" />
-                                <!-- Interests-->
-                                <section class="resume-section" id="interests">
-                                    <div class="resume-section-content">
-                                        <h2 class="mb-2">Interests</h2>
-                                        <p>Apart from being a web developer, I enjoy most of my time being outdoors. In the winter, I am an avid skier and novice ice climber. During the warmer months here in Colorado, I enjoy mountain biking, free climbing, and kayaking.</p>
-                                        <p class="mb-0">When forced indoors, I follow a number of sci-fi and fantasy genre movies and television shows, I am an aspiring chef, and I spend a large amount of my free time exploring the latest technology advancements in the front-end web development world.</p>
-                                    </div>
-                                </section>
-                                <hr class="m-0" />
+                                <hr class="my-2" />
                                 <!-- Awards-->
                                 <section class="resume-section" id="awards">
                                     <div class="resume-section-content">
-                                        <h2 class="mb-2">Awards & Certifications</h2>
-                                        <ul class="fa-ul mb-0">
-                                            <li>
-                                                <span class="fa-li"><i class="fas fa-trophy text-warning"></i></span>
-                                                Google Analytics Certified Developer
-                                            </li>
-                                            <li>
-                                                <span class="fa-li"><i class="fas fa-trophy text-warning"></i></span>
-                                                Mobile Web Specialist - Google Certification
-                                            </li>
-                                            <li>
-                                                <span class="fa-li"><i class="fas fa-trophy text-warning"></i></span>
-                                                1
-                                                <sup>st</sup>
-                                                Place - University of Colorado Boulder - Emerging Tech Competition 2009
-                                            </li>
-                                            <li>
-                                                <span class="fa-li"><i class="fas fa-trophy text-warning"></i></span>
-                                                1
-                                                <sup>st</sup>
-                                                Place - University of Colorado Boulder - Adobe Creative Jam 2008 (UI Design Category)
-                                            </li>
-                                            <li>
-                                                <span class="fa-li"><i class="fas fa-trophy text-warning"></i></span>
-                                                2
-                                                <sup>nd</sup>
-                                                Place - University of Colorado Boulder - Emerging Tech Competition 2008
-                                            </li>
-                                            <li>
-                                                <span class="fa-li"><i class="fas fa-trophy text-warning"></i></span>
-                                                1
-                                                <sup>st</sup>
-                                                Place - James Buchanan High School - Hackathon 2006
-                                            </li>
-                                            <li>
-                                                <span class="fa-li"><i class="fas fa-trophy text-warning"></i></span>
-                                                3
-                                                <sup>rd</sup>
-                                                Place - James Buchanan High School - Hackathon 2005
+                                        <h3 class="text-primary">Cursos e certificados</h3>
+                                        <div class="subheading text-secondary my-2">Meu perfil e certificados na Alura</div>
+                                        <ul class="list-inline my-2">
+                                            <li class="list-inline-item">
+                                                <a href="https://cursos.alura.com.br/user/jvsouz4"><img style="width: 30px; height: 30px" class="rounded my-2" src="https://cursos.alura.com.br/assets/images/alura/favicon.ico" target="_blank"></a>
                                             </li>
                                         </ul>
                                     </div>
