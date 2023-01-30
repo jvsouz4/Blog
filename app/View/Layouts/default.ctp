@@ -13,6 +13,8 @@
 		<!-- Bootstrap core CSS-->
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 		<link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+		<!-- Dev Icon-->
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
 	</head>
 	<body>
 		<!-- Header-->
@@ -28,10 +30,10 @@
 						<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
 							<li class="nav-item"><a class="text-white nav-link" href="http://localhost:8000">Posts</a></li>
 							<li class="nav-item"><a class="text-white nav-link" href="http://localhost:8000/users">Usuários</a></li>
-							<li class="nav-item"><a class="text-white nav-link" href="http://localhost:8000/infos">Sobre mim</a></li>
+							<li class="nav-item"><a class="text-white nav-link" href="http://localhost:8000/infos">Sobre o desenvolvedor</a></li>
 							<li class="nav-item dropdown">
 								
-								<a class="text-white nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+								<a class="text-white nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 									Bem vindo, <?php echo $logado ?>!
 								</a>
 								<ul class="dropdown-menu dropdown-menu-dark">
