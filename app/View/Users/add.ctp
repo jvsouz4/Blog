@@ -32,7 +32,7 @@
                                 </div>
 
                                 <div class="form-floating">
-                                    <?php echo $this->Form->input('password', array('class' => 'form-control', 'label' => '', 'placeholder' => 'Senha'));?>      
+                                    <?php echo $this->Form->input('password', array('class' => 'form-control', 'label' => '', 'placeholder' => 'Senha'));?>
                                 </div>
 
                                 <div class="form-floating">
