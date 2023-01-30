@@ -19,7 +19,7 @@
         <!-- Page content-->
         <div class="container">
             <div class="container">
-                <p><?php echo $this->Html->link('Adicionar novo post', array('action' => 'add'), array('class' => 'text-decoration-none btn btn-outline-primary')); ?></p>
+                <p><?php echo $this->Html->link('Adicionar novo post', array('action' => 'add'), array('class' => 'text-decoration-none btn btn-primary')); ?></p>
                 <!-- Filtro-->
                 <div>
                     <div class='mb-3'>
@@ -43,7 +43,7 @@
                         </div>
                         <div class="col-12">
                             <div class="input-group">
-                                <button type="submit" class="btn btn-outline-primary">Filtrar <?php echo $this->Form->end(__('')) ?></button>
+                                <button type="submit" class="btn btn-primary">Filtrar <?php echo $this->Form->end(__('')) ?></button>
                             </div>
                         </div>
                     </div>
