@@ -7,6 +7,7 @@ class UsersController extends AppController {
     public function index() {
         
         $title = $this->request->data('title');
+        $cargo = $this->request->data('cargo');
 
         $consultall ="SELECT u.id as user_id, u.name as user_name, u.username as user_username, u.role as user_role
         FROM users u
@@ -16,14 +17,34 @@ class UsersController extends AppController {
         FROM users u
         WHERE  u.username ILIKE '%$title%' OR u.name ILIKE '%$title%'
         order by u.id";
+        
+        $consulta2 = "SELECT u.id as user_id, u.name as user_name, u.username as user_username, u.role as user_role
+        FROM users u
+        WHERE  u.role ILIKE '%$cargo%'
+        order by u.id";
 
-        if (!empty($this->request->data)){
+        $consulta3 = "SELECT u.id as user_id, u.name as user_name, u.username as user_username, u.role as user_role
+        FROM users u
+        WHERE  u.username ILIKE '%$title%' OR u.name ILIKE '%$title%' AND u.role ILIKE '%$cargo%'
+        order by u.id";
 
+
+
+        if(!empty($this->request->data('title')) && !empty($this->request->data('cargo'))){
+            $sql = $this->User->query($consulta3);
+
+            $this->set('users', $sql);
+
+        }elseif(!empty($this->request->data('title')) && empty($this->request->data('cargo'))){
             $sql = $this->User->query($consulta);
 
             $this->set('users', $sql);
 
-            
+        }elseif(empty($this->request->data('title')) && !empty($this->request->data('cargo'))){
+            $sql = $this->User->query($consulta2);
+
+            $this->set('users', $sql);
+
         }else{
             $sql = $this->User->query($consultall);
 
