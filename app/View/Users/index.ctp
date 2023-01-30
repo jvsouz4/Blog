@@ -20,7 +20,7 @@
         <div class="container">
             <div class="container">
                 <!-- Filtro-->
-                <p><?php echo $this->Html->link('Adicionar novo usuário', array('action' => 'add'), array('class' => 'text-decoration-none btn btn-outline-primary')); ?></p>
+                <p><?php echo $this->Html->link('Adicionar novo usuário', array('action' => 'add'), array('class' => 'text-decoration-none btn btn-primary')); ?></p>
                 <div>
                     <div class='mb-3'>
                         <?php echo $this->Form->create('User')?>
@@ -33,7 +33,12 @@
                         </div>
                         <div class="col-12">
                             <div class="input-group">
-                                <button type="submit" class="btn btn-outline-primary">Filtrar <?php echo $this->Form->end(__('')) ?></button>
+                                <input placeholder="Cargo" class="form-control" type="text" name="cargo" value="<?php if(isset($_POST['$cargo'])){ echo $_POST['$cargo'];}?>">
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="input-group">
+                                <button type="submit" class="btn btn-primary">Filtrar <?php echo $this->Form->end(__('')) ?></button>
                             </div>
                         </div>
                     </div>
