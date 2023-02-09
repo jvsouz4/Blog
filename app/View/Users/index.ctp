@@ -33,7 +33,11 @@
                         </div>
                         <div class="col-12">
                             <div class="input-group">
-                                <input placeholder="Cargo" class="form-control" type="text" name="cargo" value="<?php if(isset($_POST['$cargo'])){ echo $_POST['$cargo'];}?>">
+                                <select class="form-select" name="cargo" value="<?php if(isset($_POST['$cargo'])){ echo $_POST['$cargo'];}?>">
+                                    <option selected value="">Selecione o cargo</option>
+                                    <option name="admin">admin</option>
+                                    <option name="author">author</option>
+                                </select>
                             </div>
                         </div>
                         <div class="col-12">

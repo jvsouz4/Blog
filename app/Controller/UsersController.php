@@ -7,8 +7,9 @@ class UsersController extends AppController {
     public function index() {
         
         $title = $this->request->data('title');
-        $cargo = $this->request->data('cargo');
 
+        $cargo = $this->request->data('cargo');
+        
         $consultall ="SELECT u.id as user_id, u.name as user_name, u.username as user_username, u.role as user_role
         FROM users u
         order by u.id";
@@ -25,7 +26,7 @@ class UsersController extends AppController {
 
         $consulta3 = "SELECT u.id as user_id, u.name as user_name, u.username as user_username, u.role as user_role
         FROM users u
-        WHERE  u.username ILIKE '%$title%' OR u.name ILIKE '%$title%' AND u.role ILIKE '%$cargo%'
+        WHERE  (u.username ILIKE '%$title%' OR u.name ILIKE '%$title%') AND u.role ILIKE '%$cargo%'
         order by u.id";
 
 
