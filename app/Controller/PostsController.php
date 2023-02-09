@@ -23,7 +23,7 @@ class PostsController extends AppController {
         FROM posts p
         INNER JOIN users u
         ON p.user_id = u.id
-        order by post_id";
+        order by p.created DESC";
 
         $consulta = "SELECT p.id as post_id, p.title, p.body, p.created as post_created, u.id as user_id, u.name,
         TO_CHAR(
@@ -34,7 +34,7 @@ class PostsController extends AppController {
         INNER JOIN users u
         ON p.user_id = u.id
         WHERE p.title ILIKE '%$nome%' OR p.body ILIKE '%$nome%'
-        order by post_id";
+        order by p.created DESC";
 
         $consulta2 = "SELECT p.id as post_id, p.title, p.body, p.created as post_created, u.id as user_id, u.name,
         TO_CHAR(
@@ -45,7 +45,7 @@ class PostsController extends AppController {
         INNER JOIN users u
         ON p.user_id = u.id
         WHERE p.created BETWEEN '$dtiformatada' AND '$dtfformatada 23:59'
-        order by post_id";
+        order by p.created DESC";
         
         $consulta3 = "SELECT p.id as post_id, p.title, p.body, p.created as post_created, u.id as user_id, u.name,
         TO_CHAR(
@@ -56,7 +56,7 @@ class PostsController extends AppController {
         INNER JOIN users u
         ON p.user_id = u.id
         WHERE p.title ILIKE '%$nome%' OR p.body ILIKE '%$nome%' AND p.created BETWEEN '$dtiformatada' AND '$dtfformatada'
-        order by post_id";
+        order by p.created DESC";
         
 
         if(!empty($this->request->data('nome')) && empty($this->request->data('dtinicial')) && empty($this->request->data('dtfinal'))){

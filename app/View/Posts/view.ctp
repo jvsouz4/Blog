@@ -34,7 +34,7 @@
                                         <hr>
                                         <h5><?php echo $post[0]['body'];?></h5>
                                         <hr>
-                                        <p>Criado em: <?php echo $post[0]['created']; ?></p>
+                                        <p>Criado em: <?php echo $post[0]['post_date']; ?></p>
                                         <p>Criado por: <?php echo $post[0]['name']; ?></p>
                                     </div>
                                 </div>
