@@ -60,11 +60,25 @@ class UsersController extends AppController {
     }
 
     public function view($id = null) {
+
         $this->User->id = $id;
+
         if (!$this->User->exists()) {
-            throw new NotFoundException(__('Invalid user'));
+            throw new NotFoundException(__('Usuário inválido'));
         }
-        $this->set('user', $this->User->findById($id));
+
+        $consultall = "SELECT u.name , u.created, u.role,
+        TO_CHAR(
+            u.created,
+            'DD-MM-YYYY'
+        )user_date
+        FROM users u
+        WHERE u.id = $id";
+
+        $sql = $this->User->query($consultall);
+        
+        $this->set('user', $sql);
+
     }
 
     public function add() {

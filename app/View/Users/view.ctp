@@ -29,11 +29,13 @@
                                     </a>
                                 </div>
                                 <div class="col-md-5 align-self-center">
-                                    <h2><?php echo h($user['User']['name']); ?></h3>
-                                    <hr>
-                                    <h5>Criado em: <?php echo $user['User']['created']; ?></h5>
-                                    <hr>
-                                    <p><?php echo h($user['User']['role']); ?></p>
+                                    <?php foreach ($user as $user): ?>
+                                        <h2><?php echo h($user[0]['name']); ?></h3>
+                                        <hr>
+                                        <h5>Criado em: <?php echo $user[0]['user_date']; ?></h5>
+                                        <hr>
+                                        <p><?php echo h($user[0]['role']); ?></p>
+                                    <?php endforeach; ?>
                                 </div>
                             </div>
                         </div>
