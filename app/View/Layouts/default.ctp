@@ -34,7 +34,7 @@
 							<li class="nav-item dropdown">
 								
 								<a class="text-white nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-									Bem vindo, <?php echo $logado ?>!
+									Bem vindo, <?php echo $_SESSION['user.name'] ?>!
 								</a>
 								<ul class="dropdown-menu dropdown-menu-dark">
 									<li><a class="text-white dropdown-item" href="http://localhost:8000/users/login">Login</a></li>
