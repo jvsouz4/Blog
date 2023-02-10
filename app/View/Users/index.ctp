@@ -47,7 +47,9 @@
                         </div>
                     </div>
                 </div>
+                
                 <?php echo $this->Flash->render('flash'); ?>
+
                 <!-- Featured blog users-->
                 <div style="height:286px" class=" overflow-auto">
                     <table class="table table-striped table-hover">
