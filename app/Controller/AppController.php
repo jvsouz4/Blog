@@ -5,6 +5,8 @@ App::uses('Controller', 'Controller');
 // app/Controller/AppController.php
 class AppController extends Controller {
     
+    public $_SESSION;
+    
     public $components = array(
         'Flash',
         'Auth' => array(
@@ -37,11 +39,17 @@ class AppController extends Controller {
 
         $this->Auth->allow('index', 'view');
         if ($this->Auth->login() == false){
-            $this->set('logado', 'Visitante');
+            $_SESSION['user.name']='Visitante';
+            $_SESSION['user.role']='visitante';
         }else{
-            $logado = $_SESSION['Auth']['User']['name'];
-            $this->set('logado', $logado);
+            $_SESSION['user.name'] = $_SESSION['Auth']['User']['name'];
+            $_SESSION['user.role'] = $_SESSION['Auth']['User']['role'];
         }
+
+    }
+
+    public function afterFilter() {
+
     }
     
 }
