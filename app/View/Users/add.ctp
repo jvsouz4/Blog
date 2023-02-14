@@ -35,9 +35,17 @@
                                     <?php echo $this->Form->input('password', array('class' => 'form-control', 'label' => '', 'placeholder' => 'Senha'));?>
                                 </div>
 
-                                <div class="form-floating">
-                                    <?php echo $this->Form->input('role', array('style' => 'width:100px', 'class' => 'form-select form-select-sm', 'label' => '', 'options' => array('admin' => 'Admin', 'author' => 'Author')));?>     
-                                </div>
+                                <?php if(isset($_SESSION['Auth']['User']['role']) && $_SESSION['Auth']['User']['role'] == 'admin'){?>
+                                    <div class="form-floating">
+                                        <?php echo $this->Form->input('role', array('style' => 'width:100px', 'class' => 'form-select form-select-sm', 'label' => '', 'options' => array('admin' => 'Admin', 'author' => 'Author')));?>     
+                                    </div>
+                                <?php } else{ ?>
+                                    <div class="form-floating">
+                                        <?php echo $this->Form->input('role', array('style' => 'width:100px', 'class' => 'form-select form-select-sm', 'label' => '', 'options' => array('author' => 'Author')));?>     
+                                    </div>
+                                <?php } ?>
+
+
 
                                 <hr class="my-4">
 

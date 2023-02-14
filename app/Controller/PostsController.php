@@ -6,82 +6,166 @@ class PostsController extends AppController {
 
     public function index() {
         $nome = $this->request->data('nome');
-        
+        $this->Session->write('nome', $nome);
+
         $dtinicial = $this->request->data('dtinicial');
-        $dtformatada = str_replace("/", "-", $dtinicial);
-        $dtiformatada = date('Y-m-d', strtotime($dtformatada));
+        $this->Session->write('dtinicial', $dtinicial);
 
         $dtfinal = $this->request->data('dtfinal');
-        $dtformatada2 = str_replace("/", "-", $dtfinal);
-        $dtfformatada = date('Y-m-d', strtotime($dtformatada2));
-
-        $consultall = "SELECT p.id as post_id, p.title, p.body, p.created as post_created, u.id as user_id, u.name,
-        TO_CHAR(
-            p.created,
-            'DD-MM-YYYY'
-        )post_date
-        FROM posts p
-        INNER JOIN users u
-        ON p.user_id = u.id
-        order by p.created DESC";
-
-        $consulta = "SELECT p.id as post_id, p.title, p.body, p.created as post_created, u.id as user_id, u.name,
-        TO_CHAR(
-            p.created,
-            'DD-MM-YYYY'
-        )post_date
-        FROM posts p
-        INNER JOIN users u
-        ON p.user_id = u.id
-        WHERE p.title ILIKE '%$nome%' OR p.body ILIKE '%$nome%'
-        order by p.created DESC";
-
-        $consulta2 = "SELECT p.id as post_id, p.title, p.body, p.created as post_created, u.id as user_id, u.name,
-        TO_CHAR(
-            p.created,
-            'DD-MM-YYYY'
-        )post_date
-        FROM posts p
-        INNER JOIN users u
-        ON p.user_id = u.id
-        WHERE p.created BETWEEN '$dtiformatada' AND '$dtfformatada 23:59'
-        order by p.created DESC";
+        $this->Session->write('dtfinal', $dtfinal);
         
-        $consulta3 = "SELECT p.id as post_id, p.title, p.body, p.created as post_created, u.id as user_id, u.name,
+        $agora = $this->Post->query("select now(),
         TO_CHAR(
-            p.created,
-            'DD-MM-YYYY'
-        )post_date
-        FROM posts p
-        INNER JOIN users u
-        ON p.user_id = u.id
-        WHERE p.title ILIKE '%$nome%' OR p.body ILIKE '%$nome%' AND p.created BETWEEN '$dtiformatada' AND '$dtfformatada'
-        order by p.created DESC";
+            now(),
+            'YYYY-MM-DD'
+        )");
         
+        $this->set('agora', $agora);
+        
+        if(isset($_SESSION['Auth']['User']['role']) && $_SESSION['Auth']['User']['role'] == 'admin'){
+            $consultall = "SELECT p.id as post_id, p.title, p.body, p.created as post_created, u.id as user_id, u.name,
+            TO_CHAR(
+                p.created,
+                'DD-MM-YYYY'
+            )post_date
+            FROM posts p
+            INNER JOIN users u
+            ON p.user_id = u.id
+            order by p.created DESC";
 
-        if(!empty($this->request->data('nome')) && empty($this->request->data('dtinicial')) && empty($this->request->data('dtfinal'))){
-            $sql = $this->Post->query($consulta);
+            $consulta = "SELECT p.id as post_id, p.title, p.body, p.created as post_created, u.id as user_id, u.name,
+            TO_CHAR(
+                p.created,
+                'DD-MM-YYYY'
+            )post_date
+            FROM posts p
+            INNER JOIN users u
+            ON p.user_id = u.id
+            WHERE p.title ILIKE '%$nome%' OR p.body ILIKE '%$nome%'
+            order by p.created DESC";
 
-            $this->set('posts', $sql);
-        }elseif(empty($this->request->data('nome')) && !empty($this->request->data('dtinicial')) && !empty($this->request->data('dtfinal'))){
-            $sql = $this->Post->query($consulta2);
+            $consulta2 = "SELECT p.id as post_id, p.title, p.body, p.created as post_created, u.id as user_id, u.name,
+            TO_CHAR(
+                p.created,
+                'DD-MM-YYYY'
+            )post_date
+            FROM posts p
+            INNER JOIN users u
+            ON p.user_id = u.id
+            WHERE p.created BETWEEN '$dtinicial 00:00' AND '$dtfinal 23:59'
+            order by p.created DESC";
+            
+            $consulta3 = "SELECT p.id as post_id, p.title, p.body, p.created as post_created, u.id as user_id, u.name,
+            TO_CHAR(
+                p.created,
+                'DD-MM-YYYY'
+            )post_date
+            FROM posts p
+            INNER JOIN users u
+            ON p.user_id = u.id
+            WHERE (p.title ILIKE '%$nome%' OR p.body ILIKE '%$nome%') AND (p.created BETWEEN '$dtinicial 00:00' AND '$dtfinal 23:59')
+            order by p.created DESC";
 
-            $this->set('posts', $sql);
-        }elseif(!empty($this->request->data('nome')) && !empty($this->request->data('dtinicial')) && !empty($this->request->data('dtfinal'))){
-            $sql = $this->Post->query($consulta3);
+            if(!empty($this->request->data('nome')) && empty($this->request->data('dtinicial')) && empty($this->request->data('dtfinal'))){
+                $sql = $this->Post->query($consulta);
 
-            $this->set('posts', $sql);
+                $this->set('posts', $sql);
+            }elseif(empty($this->request->data('nome')) && !empty($this->request->data('dtinicial')) && !empty($this->request->data('dtfinal'))){
+                $sql = $this->Post->query($consulta2);
+
+                $this->set('posts', $sql);
+            }elseif(!empty($this->request->data('nome')) && !empty($this->request->data('dtinicial')) && !empty($this->request->data('dtfinal'))){
+                $sql = $this->Post->query($consulta3);
+
+                $this->set('posts', $sql);
+            }else{
+                $sql = $this->Post->query($consultall);
+
+                $this->set('posts', $sql);
+            }
+
+            if($sql == []){
+                $this->Flash->set('Não foram encontrados registros.', array(
+                    'element' => 'error'
+                ));
+            }
+        }elseif (isset($_SESSION['Auth']['User']['role']) && $_SESSION['Auth']['User']['role'] == 'author') {
+
+            $idauthor = $_SESSION['Auth']['User']['id'];
+
+            $consultall = "SELECT p.id as post_id, p.title, p.body, p.created as post_created, u.id as user_id, u.name,
+            TO_CHAR(
+                p.created,
+                'DD-MM-YYYY'
+            )post_date
+            FROM posts p
+            INNER JOIN users u
+            ON p.user_id = u.id
+            WHERE u.id = $idauthor
+            order by p.created DESC";
+
+            $consulta = "SELECT p.id as post_id, p.title, p.body, p.created as post_created, u.id as user_id, u.name,
+            TO_CHAR(
+                p.created,
+                'DD-MM-YYYY'
+            )post_date
+            FROM posts p
+            INNER JOIN users u
+            ON p.user_id = u.id
+            WHERE (p.title ILIKE '%$nome%' OR p.body ILIKE '%$nome%') AND u.id = $idauthor
+            order by p.created DESC";
+
+            $consulta2 = "SELECT p.id as post_id, p.title, p.body, p.created as post_created, u.id as user_id, u.name,
+            TO_CHAR(
+                p.created,
+                'DD-MM-YYYY'
+            )post_date
+            FROM posts p
+            INNER JOIN users u
+            ON p.user_id = u.id
+            WHERE (p.created BETWEEN '$dtinicial 00:00' AND '$dtfinal 23:59') AND u.id = $idauthor
+            order by p.created DESC";
+            
+            $consulta3 = "SELECT p.id as post_id, p.title, p.body, p.created as post_created, u.id as user_id, u.name,
+            TO_CHAR(
+                p.created,
+                'DD-MM-YYYY'
+            )post_date
+            FROM posts p
+            INNER JOIN users u
+            ON p.user_id = u.id
+            WHERE (p.title ILIKE '%$nome%' OR p.body ILIKE '%$nome%') AND (p.created BETWEEN '$dtinicial 00:00' AND '$dtfinal 23:59') AND u.id = $idauthor
+            order by p.created DESC";
+
+            if(!empty($this->request->data('nome')) && empty($this->request->data('dtinicial')) && empty($this->request->data('dtfinal'))){
+                $sql = $this->Post->query($consulta);
+
+                $this->set('posts', $sql);
+            }elseif(empty($this->request->data('nome')) && !empty($this->request->data('dtinicial')) && !empty($this->request->data('dtfinal'))){
+                $sql = $this->Post->query($consulta2);
+
+                $this->set('posts', $sql);
+            }elseif(!empty($this->request->data('nome')) && !empty($this->request->data('dtinicial')) && !empty($this->request->data('dtfinal'))){
+                $sql = $this->Post->query($consulta3);
+
+                $this->set('posts', $sql);
+            }else{
+                $sql = $this->Post->query($consultall);
+
+                $this->set('posts', $sql);
+            }
+
+            if($sql == []){
+                $this->Flash->set('Não foram encontrados registros.', array(
+                    'element' => 'error'
+                ));
+            }
         }else{
-            $sql = $this->Post->query($consultall);
-
-            $this->set('posts', $sql);
-        }
-
-        if($sql == []){
-            $this->Flash->set('Não foram encontrados registros.', array(
+            $this->Flash->set('Você não pode acessar esta área.', array(
                 'element' => 'error'
             ));
         }
+        
     }
 
     public function view($id = null) {

@@ -28,13 +28,22 @@
 					</button>
 					<div class="collapse navbar-collapse" id="navbarSupportedContent">
 						<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-							<li class="nav-item"><a class="text-white nav-link" href="http://localhost:8000">Posts</a></li>
+							<li class="nav-item"><a class="text-white nav-link" href="http://localhost:8000/visualizacao">Posts</a></li>
+							<?php if(isset($_SESSION['Auth']['User']['role'])): ?>
+								<li class="nav-item"><a class="text-white nav-link" href="http://localhost:8000/posts">Gerenciamento dos posts</a></li>
+							<?php endif ?>
+							<?php if(isset($_SESSION['Auth']['User']['role']) && $_SESSION['Auth']['User']['role'] == 'admin'){ ?>
 							<li class="nav-item"><a class="text-white nav-link" href="http://localhost:8000/users">Usuários</a></li>
+							<?php } ?>
 							<li class="nav-item"><a class="text-white nav-link" href="http://localhost:8000/infos">Sobre o desenvolvedor</a></li>
 							<li class="nav-item dropdown">
 								
 								<a class="text-white nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-									Bem vindo, <?php echo $_SESSION['user.name'] ?>!
+									Bem vindo, <?php if(isset($_SESSION['Auth']['User']['role'])){ 
+										echo $_SESSION['Auth']['User']['name'];
+										}else{
+											echo 'Visitante';
+										} ?>!
 								</a>
 								<ul class="dropdown-menu dropdown-menu-dark">
 									<li><a class="text-white dropdown-item" href="http://localhost:8000/users/login">Login</a></li>

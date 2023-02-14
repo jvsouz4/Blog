@@ -7,6 +7,8 @@ class UsersController extends AppController {
     public function index() {
         
         $title = $this->request->data('title');
+        $this->Session->write('title', $title);
+        
         $cargo = $this->request->data('cargo');
 
         $consulta ="SELECT u.id as user_id, u.name as user_name, u.username as user_username, u.role as user_role
@@ -30,7 +32,7 @@ class UsersController extends AppController {
         
 
         
-        if ($_SESSION['user.role'] == 'admin'){
+        if ($_SESSION['Auth']['User']['role'] == 'admin'){
             
             if(!empty($this->request->data('title')) && !empty($this->request->data('cargo'))) {
                 $sql = $this->User->query($consulta3);
@@ -94,7 +96,7 @@ class UsersController extends AppController {
             $this->User->create();
             if ($this->User->save($this->request->data)) {
                 $this->Flash->success(__('O usuário foi criado.'));
-                return $this->redirect(array('action' => 'index'));
+                return $this->redirect(array('action' => 'login'));
             }
             $this->Flash->error(
                 __('O usuário não foi criado. Por favor, tente novamente.')
