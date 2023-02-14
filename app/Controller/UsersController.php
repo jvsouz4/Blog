@@ -150,7 +150,8 @@ class UsersController extends AppController {
     public function login() {
         if ($this->request->is('post')) {
             if ($this->Auth->login()) {
-                return $this->redirect($this->Auth->redirectUrl());
+                return $this->redirect(array('controller' => 'visualizacao', 
+                'action' => 'index'));
             }
             $this->Flash->error(__('Usuário/senha inválido, tente novamente.'));
         }

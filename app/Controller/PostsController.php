@@ -66,6 +66,50 @@ class PostsController extends AppController {
             WHERE (p.title ILIKE '%$nome%' OR p.body ILIKE '%$nome%') AND (p.created BETWEEN '$dtinicial 00:00' AND '$dtfinal 23:59')
             order by p.created DESC";
 
+            $consulta4 = "SELECT p.id as post_id, p.title, p.body, p.created as post_created, u.id as user_id, u.name,
+            TO_CHAR(
+                p.created,
+                'DD-MM-YYYY'
+            )post_date
+            FROM posts p
+            INNER JOIN users u
+            ON p.user_id = u.id
+            WHERE (p.title ILIKE '%$nome%' OR p.body ILIKE '%$nome%') AND (p.created >= '$dtinicial 00:00')
+            order by p.created DESC";
+
+            $consulta5 = "SELECT p.id as post_id, p.title, p.body, p.created as post_created, u.id as user_id, u.name,
+            TO_CHAR(
+                p.created,
+                'DD-MM-YYYY'
+            )post_date
+            FROM posts p
+            INNER JOIN users u
+            ON p.user_id = u.id
+            WHERE (p.title ILIKE '%$nome%' OR p.body ILIKE '%$nome%') AND (p.created <= '$dtfinal 23:59')
+            order by p.created DESC";
+
+            $consulta6 = "SELECT p.id as post_id, p.title, p.body, p.created as post_created, u.id as user_id, u.name,
+            TO_CHAR(
+                p.created,
+                'DD-MM-YYYY'
+            )post_date
+            FROM posts p
+            INNER JOIN users u
+            ON p.user_id = u.id
+            WHERE p.created >= '$dtinicial 00:00'
+            order by p.created DESC";
+
+            $consulta7 = "SELECT p.id as post_id, p.title, p.body, p.created as post_created, u.id as user_id, u.name,
+            TO_CHAR(
+                p.created,
+                'DD-MM-YYYY'
+            )post_date
+            FROM posts p
+            INNER JOIN users u
+            ON p.user_id = u.id
+            WHERE p.created <= '$dtfinal 23:59'
+            order by p.created DESC";
+
             if(!empty($this->request->data('nome')) && empty($this->request->data('dtinicial')) && empty($this->request->data('dtfinal'))){
                 $sql = $this->Post->query($consulta);
 
@@ -76,11 +120,27 @@ class PostsController extends AppController {
                 $this->set('posts', $sql);
             }elseif(!empty($this->request->data('nome')) && !empty($this->request->data('dtinicial')) && !empty($this->request->data('dtfinal'))){
                 $sql = $this->Post->query($consulta3);
-
+    
+                $this->set('posts', $sql);
+            }elseif(!empty($this->request->data('nome')) && !empty($this->request->data('dtinicial')) && empty($this->request->data('dtfinal'))){
+                $sql = $this->Post->query($consulta4);
+    
+                $this->set('posts', $sql);
+            }elseif(!empty($this->request->data('nome')) && empty($this->request->data('dtinicial')) && !empty($this->request->data('dtfinal'))){
+                $sql = $this->Post->query($consulta5);
+    
+                $this->set('posts', $sql);
+            }elseif(empty($this->request->data('nome')) && !empty($this->request->data('dtinicial')) && empty($this->request->data('dtfinal'))){
+                $sql = $this->Post->query($consulta6);
+    
+                $this->set('posts', $sql);
+            }elseif(empty($this->request->data('nome')) && empty($this->request->data('dtinicial')) && !empty($this->request->data('dtfinal'))){
+                $sql = $this->Post->query($consulta7);
+    
                 $this->set('posts', $sql);
             }else{
                 $sql = $this->Post->query($consultall);
-
+    
                 $this->set('posts', $sql);
             }
 
@@ -101,7 +161,7 @@ class PostsController extends AppController {
             FROM posts p
             INNER JOIN users u
             ON p.user_id = u.id
-            WHERE u.id = $idauthor
+            WHERE u.id = ($idauthor)
             order by p.created DESC";
 
             $consulta = "SELECT p.id as post_id, p.title, p.body, p.created as post_created, u.id as user_id, u.name,
@@ -112,7 +172,7 @@ class PostsController extends AppController {
             FROM posts p
             INNER JOIN users u
             ON p.user_id = u.id
-            WHERE (p.title ILIKE '%$nome%' OR p.body ILIKE '%$nome%') AND u.id = $idauthor
+            WHERE (p.title ILIKE '%$nome%' OR p.body ILIKE '%$nome%') AND u.id = ($idauthor)
             order by p.created DESC";
 
             $consulta2 = "SELECT p.id as post_id, p.title, p.body, p.created as post_created, u.id as user_id, u.name,
@@ -123,7 +183,7 @@ class PostsController extends AppController {
             FROM posts p
             INNER JOIN users u
             ON p.user_id = u.id
-            WHERE (p.created BETWEEN '$dtinicial 00:00' AND '$dtfinal 23:59') AND u.id = $idauthor
+            WHERE (p.created BETWEEN '$dtinicial 00:00' AND '$dtfinal 23:59') AND (u.id = $idauthor)
             order by p.created DESC";
             
             $consulta3 = "SELECT p.id as post_id, p.title, p.body, p.created as post_created, u.id as user_id, u.name,
@@ -134,7 +194,51 @@ class PostsController extends AppController {
             FROM posts p
             INNER JOIN users u
             ON p.user_id = u.id
-            WHERE (p.title ILIKE '%$nome%' OR p.body ILIKE '%$nome%') AND (p.created BETWEEN '$dtinicial 00:00' AND '$dtfinal 23:59') AND u.id = $idauthor
+            WHERE (p.title ILIKE '%$nome%' OR p.body ILIKE '%$nome%') AND (p.created BETWEEN '$dtinicial 00:00' AND '$dtfinal 23:59') AND (u.id = $idauthor)
+            order by p.created DESC";
+
+            $consulta4 = "SELECT p.id as post_id, p.title, p.body, p.created as post_created, u.id as user_id, u.name,
+            TO_CHAR(
+                p.created,
+                'DD-MM-YYYY'
+            )post_date
+            FROM posts p
+            INNER JOIN users u
+            ON p.user_id = u.id
+            WHERE (p.title ILIKE '%$nome%' OR p.body ILIKE '%$nome%') AND (p.created >= '$dtinicial 00:00') AND (u.id = $idauthor)
+            order by p.created DESC";
+
+            $consulta5 = "SELECT p.id as post_id, p.title, p.body, p.created as post_created, u.id as user_id, u.name,
+            TO_CHAR(
+                p.created,
+                'DD-MM-YYYY'
+            )post_date
+            FROM posts p
+            INNER JOIN users u
+            ON p.user_id = u.id
+            WHERE (p.title ILIKE '%$nome%' OR p.body ILIKE '%$nome%') AND (p.created <= '$dtfinal 23:59') AND (u.id = $idauthor)
+            order by p.created DESC";
+
+            $consulta6 = "SELECT p.id as post_id, p.title, p.body, p.created as post_created, u.id as user_id, u.name,
+            TO_CHAR(
+                p.created,
+                'DD-MM-YYYY'
+            )post_date
+            FROM posts p
+            INNER JOIN users u
+            ON p.user_id = u.id
+            WHERE (p.created >= '$dtinicial 00:00') AND (u.id = $idauthor)
+            order by p.created DESC";
+
+            $consulta7 = "SELECT p.id as post_id, p.title, p.body, p.created as post_created, u.id as user_id, u.name,
+            TO_CHAR(
+                p.created,
+                'DD-MM-YYYY'
+            )post_date
+            FROM posts p
+            INNER JOIN users u
+            ON p.user_id = u.id
+            WHERE (p.created <= '$dtfinal 23:59') AND (u.id = $idauthor)
             order by p.created DESC";
 
             if(!empty($this->request->data('nome')) && empty($this->request->data('dtinicial')) && empty($this->request->data('dtfinal'))){
@@ -147,11 +251,27 @@ class PostsController extends AppController {
                 $this->set('posts', $sql);
             }elseif(!empty($this->request->data('nome')) && !empty($this->request->data('dtinicial')) && !empty($this->request->data('dtfinal'))){
                 $sql = $this->Post->query($consulta3);
-
+    
+                $this->set('posts', $sql);
+            }elseif(!empty($this->request->data('nome')) && !empty($this->request->data('dtinicial')) && empty($this->request->data('dtfinal'))){
+                $sql = $this->Post->query($consulta4);
+    
+                $this->set('posts', $sql);
+            }elseif(!empty($this->request->data('nome')) && empty($this->request->data('dtinicial')) && !empty($this->request->data('dtfinal'))){
+                $sql = $this->Post->query($consulta5);
+    
+                $this->set('posts', $sql);
+            }elseif(empty($this->request->data('nome')) && !empty($this->request->data('dtinicial')) && empty($this->request->data('dtfinal'))){
+                $sql = $this->Post->query($consulta6);
+    
+                $this->set('posts', $sql);
+            }elseif(empty($this->request->data('nome')) && empty($this->request->data('dtinicial')) && !empty($this->request->data('dtfinal'))){
+                $sql = $this->Post->query($consulta7);
+    
                 $this->set('posts', $sql);
             }else{
                 $sql = $this->Post->query($consultall);
-
+    
                 $this->set('posts', $sql);
             }
 
@@ -257,6 +377,8 @@ class PostsController extends AppController {
             $postId = (int) $this->request->params['pass'][0];
             if ($this->Post->isOwnedBy($postId, $user['id'])) {
                 return true;
+            }else{
+                $this->Flash->error(__('Você não pode deletar/editar um post que não é seu.'));
             }
         }
     

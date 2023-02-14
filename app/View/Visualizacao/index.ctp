@@ -28,13 +28,13 @@
                     <div class="row row-cols-lg-auto g-1 align-items-center mb-3">
                         <div class="col-12">
                             <div class="input-group">
-                                <input placeholder="Título ou conteúdo" class="form-control" style="width: 165px; margin: 3px;" type="text" name="nome" value="<?php echo $this->Session->read('nome2'); if(isset($_POST['$nome'])){ echo $_POST['$nome'];}?>">
+                                <input placeholder="Título ou conteúdo" class="form-control" style="width: 165px; margin: 3px;" type="text" name="nome" value="<?php echo $this->Session->read('nome2');?>">
                             </div>
                         </div>
                         <div class="col-12">
                             <div class="input-group">
                                 <input placeholder="Data inicial" class="form-control" style="width: 225px; margin: 3px;" type="date" name="dtinicial" value="<?php 
-                                    if(null !== $this->Session->read('nome')) {
+                                    if(null !== $this->Session->read('dtinicial2')) {
                                         echo $this->Session->read('dtinicial2');
                                     }else{
                                         foreach($agora as $agora){
@@ -47,7 +47,7 @@
                         <div class="col-12">
                             <div class="input-group">
                                 <input placeholder="Data final" class="form-control" style="width: 220px; margin: 3px;" type="date" name="dtfinal" value="<?php 
-                                    if(null !== $this->Session->read('nome')) {
+                                    if(null !== $this->Session->read('dtfinal2')) {
                                         echo $this->Session->read('dtfinal2');
                                     }else{
                                         echo $agora[0]['to_char'];

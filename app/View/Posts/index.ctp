@@ -35,7 +35,7 @@
                             <div class="col-12">
                                 <div class="input-group">
                                     <input placeholder="Data inicial" class="form-control" style="width: 225px; margin: 3px;" type="date" name="dtinicial" value="<?php 
-                                    if(null !== $this->Session->read('nome')) {
+                                    if(null !== $this->Session->read('dtinicial')) {
                                         echo $this->Session->read('dtinicial');
                                     }else{
                                         foreach($agora as $agora){
@@ -48,7 +48,7 @@
                             <div class="col-12">
                                 <div class="input-group">
                                     <input placeholder="Data final" class="form-control" style="width: 220px; margin: 3px;" type="date" name="dtfinal" value="<?php 
-                                    if(null !== $this->Session->read('nome')) {
+                                    if(null !== $this->Session->read('dtfinal')) {
                                         echo $this->Session->read('dtfinal');
                                     }else{
                                         echo $agora[0]['to_char'];

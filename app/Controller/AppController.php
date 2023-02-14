@@ -9,7 +9,7 @@ class AppController extends Controller {
         'Flash',
         'Session',
         'Auth' => array(
-            'loginRedirect' => array('controller' => 'posts', 'action' => 'index'),
+            'loginRedirect' => array('controller' => 'visualizacao', 'action' => 'index'),
             'logoutRedirect' => array(
                 'controller' => 'pages',
                 'action' => 'display'
@@ -37,7 +37,6 @@ class AppController extends Controller {
         $this->Auth->allow('index', 'view');
     }
     
-
 }
 
 ?>
